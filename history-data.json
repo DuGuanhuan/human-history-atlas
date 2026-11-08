@@ -773,7 +773,15 @@
       "tags": [
         "交流",
         "贸易"
-      ]
+      ],
+      "background": "红海贸易网络并非单向传播：东北非高地与阿拉伯南部存在物资、文字和宗教形式的往来，但具体政治关系须分时期讨论。",
+      "impact": "高地聚落、港口与跨海航行共同促成后来阿克苏姆的区域条件；不能把后来的王国制度直接投射到前500年。",
+      "debate": "南阿拉伯文字和物质文化的相似性有考古依据，但“殖民建立文明”的单线解释已受质疑。",
+      "sources": [
+        "Phillipson, David W. (2012), Foundations of an African Civilisation: Aksum and the Northern Horn, 1000 BC–AD 1300（考古综合；支持东北非本地发展与区域联系）",
+        "Fattovich, Rodolfo (2010), The Development of Ancient States in the Northern Horn of Africa, c. 3000 BC–AD 1000: An Archaeological Outline（考古综述；支持高地国家形成的长期过程）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e32",
@@ -786,7 +794,15 @@
       "tags": [
         "文化",
         "城市"
-      ]
+      ],
+      "background": "前古典玛雅地区出现纪念性建筑与复杂聚落；安第斯不同流域也发展出多样的仪式中心，两者并非同一文化体系。",
+      "impact": "农业、公共仪式与地方政治组织共同塑造社会复杂性；城市化并非单一发明，也不能假定两地直接交流。",
+      "debate": "‘玛雅文明起点’和安第斯政治整合的具体时间因遗址与测年方法而异。",
+      "sources": [
+        "Sharer, Robert J. & Traxler, Loa P. (2006), The Ancient Maya（考古综合；支持玛雅前古典社会演进）",
+        "Burger, Richard L. (1992), Chavín and the Origins of Andean Civilization（考古研究；支持安第斯宗教中心及其解释争论）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e33",
@@ -799,7 +815,15 @@
       "tags": [
         "迁徙",
         "交流"
-      ]
+      ],
+      "background": "西太平洋与中太平洋岛群的定居进程存在显著差异；本条时期标签并不意味着整个波利尼西亚已被定居。",
+      "impact": "航海技术、亲缘网络和岛屿生态适应塑造迁徙路线；部分东波利尼西亚岛屿的定居发生在更晚时期。",
+      "debate": "岛屿初次定居日期高度依赖放射性碳样本筛选；应避免把较晚扩张误记为前500年已完成。",
+      "sources": [
+        "Kirch, Patrick Vinton (2017), On the Road of the Winds, revised edition（考古与语言综合；支持太平洋定居阶段差异）",
+        "Wilmshurst, Janet M. et al. (2011), High-precision radiocarbon dating shows recent and rapid initial human colonization of East Polynesia, PNAS（测年研究；支持东波利尼西亚较晚定居）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e34",
@@ -812,7 +836,15 @@
       "tags": [
         "政治",
         "思想"
-      ]
+      ],
+      "background": "东汉延续帝国官僚体系；220年以后多政权竞争，北方与南方政治文化各有变迁。",
+      "impact": "纸张生产技术改进、佛教传播与士族政治均经历长期演变，不能仅归功于单个人物或单一事件。",
+      "debate": "蔡伦与造纸术的关系主要见后出史书记载；技术发明与改良应区分。",
+      "sources": [
+        "Lewis, Mark Edward (2009), China Between Empires: The Northern and Southern Dynasties（历史综合；支持分裂时期制度与社会变迁）",
+        "Tsien, Tsuen-Hsuin (1985), Paper and Printing, Science and Civilisation in China, vol. 5 part 1（技术史；支持造纸材料与传播证据）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e35",
@@ -825,7 +857,15 @@
       "tags": [
         "思想",
         "技术"
-      ]
+      ],
+      "background": "贵霜政权连接中亚与南亚，佛教艺术与宗教网络活跃；笈多时期的政治整合和文学科学成就属于不同年代。",
+      "impact": "贸易、僧团与王权赞助推动文化传播；‘黄金时代’概念可能遮蔽区域差异和社会等级。",
+      "debate": "迦腻色伽在位年代存在不同学术重建，不能将贵霜和笈多视作连续统一帝国。",
+      "sources": [
+        "Liu, Xinru (2010), The Silk Road in World History（跨区域史；支持贵霜时期交流网络）",
+        "Singh, Upinder (2008), A History of Ancient and Early Medieval India（综合史；支持笈多时代政治与文化的多面性）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e36",
@@ -838,7 +878,15 @@
       "tags": [
         "贸易",
         "政治"
-      ]
+      ],
+      "background": "湄公河三角洲的港口与内陆聚落参与印度洋和南海贸易；‘扶南’主要来自中国文献中的外部称谓。",
+      "impact": "地方精英利用河网、海运和宗教象征整合资源，但不宜推定存在疆域固定的单一国家。",
+      "debate": "扶南的政治边界、名称对应及‘印度化’路径存在重大争议。",
+      "sources": [
+        "Manguin, Pierre-Yves (2004), The Archaeology of Fu Nan in the Mekong River Delta: The Oc Eo Culture of Vietnam（考古研究；支持三角洲贸易与遗址证据）",
+        "Stark, Miriam T. (2006), From Funan to Angkor: Collapse and Regeneration in Ancient Cambodia（考古与历史综述；支持国家形成与名称问题）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e37",
@@ -851,7 +899,15 @@
       "tags": [
         "政治",
         "宗教"
-      ]
+      ],
+      "background": "萨珊王朝自224年兴起，与罗马帝国在美索不达米亚、亚美尼亚等地持续竞争与外交。",
+      "impact": "战争、贸易和宗教社群并行存在；基督教与祆教的历史不能简化为两大帝国的单一对立。",
+      "debate": "部分叙述依赖罗马或萨珊精英文本，战争动机和宗教政策须交叉阅读。",
+      "sources": [
+        "Daryaee, Touraj (2009), Sasanian Persia: The Rise and Fall of an Empire（萨珊史综合；支持政治与宗教格局）",
+        "Millar, Fergus (1993), The Roman Near East, 31 BC–AD 337（罗马近东研究；支持边疆社会与外交背景）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e38",
@@ -864,7 +920,15 @@
       "tags": [
         "政治",
         "宗教"
-      ]
+      ],
+      "background": "奥古斯都建立元首制后，罗马统治跨越地中海；四世纪基督教获得皇帝支持，但帝国宗教转型并非一夜完成。",
+      "impact": "道路、城市和法制促进交流，也伴随奴役、征税与地方抵抗；476年是西部皇权变化的象征日期而非整个罗马世界终结。",
+      "debate": "‘罗马衰亡’与基督教化的因果关系长期有争论，东罗马政权仍持续存在。",
+      "sources": [
+        "Beard, Mary (2015), SPQR: A History of Ancient Rome（综合史；支持罗马制度的长期演化）",
+        "Brown, Peter (1971), The World of Late Antiquity（晚古代研究；支持宗教与政治转型的连续性）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e39",
@@ -877,7 +941,15 @@
       "tags": [
         "贸易",
         "宗教"
-      ]
+      ],
+      "background": "阿克苏姆在红海内陆与港口网络中崛起，铸币和碑铭显示其政治及贸易联系。",
+      "impact": "埃扎纳时期王权与基督教关系变化深远；但早期王国历史并不等同于单一宗教改宗故事。",
+      "debate": "王国兴起年代及埃扎纳改宗过程需综合钱币、碑铭和外部文献。",
+      "sources": [
+        "Phillipson, David W. (2012), Foundations of an African Civilisation: Aksum and the Northern Horn, 1000 BC–AD 1300（考古综合；支持阿克苏姆城市与政治）",
+        "Munro-Hay, Stuart (1991), Aksum: An African Civilisation of Late Antiquity（钱币、铭文与历史综合；支持红海联系和王权证据）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e40",
@@ -890,7 +962,15 @@
       "tags": [
         "城市",
         "文化"
-      ]
+      ],
+      "background": "特奥蒂瓦坎是墨西哥高地大型城市；古典玛雅由多个王国组成，碑铭揭示其不同政治历史。",
+      "impact": "建筑、工艺和交换网络影响中美洲多个地区，但不能据此假设特奥蒂瓦坎直接统治全部玛雅城市。",
+      "debate": "378年蒂卡尔政治事件与特奥蒂瓦坎的关系有碑铭依据，具体军事和政治机制仍有争议。",
+      "sources": [
+        "Cowgill, George L. (2015), Ancient Teotihuacan: Early Urbanism in Central Mexico（考古综合；支持城市规模与社会结构）",
+        "Martin, Simon & Grube, Nikolai (2008), Chronicle of the Maya Kings and Queens（碑铭史；支持玛雅王朝及378年相关叙事）"
+      ],
+      "sourceStatus": "出版研究线索（作者、年份及支持范围）；尚未逐页核查，争议须结合最新研究复核。"
     },
     {
       "id": "e41",
