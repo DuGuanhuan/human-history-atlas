@@ -983,7 +983,15 @@
       "tags": [
         "文化",
         "迁徙"
-      ]
+      ],
+      "background": "太平洋群岛社会在公元初期沿不同生态条件和航海网络演变，不能把所有群岛视为同步文化区。",
+      "impact": "地方交换、航海知识和社会组织形成多种路径，考古遗存反映各地差异。",
+      "debate": "夏威夷、新西兰等东波利尼西亚群岛的定居通常晚于这一阶段；测年仍需逐岛讨论。",
+      "sources": [
+        "Patrick V. Kirch, On the Road of the Winds, University of California Press, 2000（考古时序）",
+        "Geoffrey Irwin, The Prehistoric Exploration and Colonisation of the Pacific, Cambridge University Press, 1992（航海模型）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e42",
@@ -996,7 +1004,15 @@
       "tags": [
         "政治",
         "交流"
-      ]
+      ],
+      "background": "隋在581年建立、589年统一南北；唐朝通过交通、使节、商人和僧侣与东亚及中亚相连。",
+      "impact": "律令、城市文化与宗教传播影响邻国，但不是简单单向复制；安史之乱后中央地方关系改变。",
+      "debate": "「东亚文化圈」是现代概念；文化交流有双向性，不能把唐代繁荣等同于政治稳定。",
+      "sources": [
+        "Mark Edward Lewis, China's Cosmopolitan Empire: The Tang Dynasty, Harvard University Press, 2009（唐代社会交流）",
+        "Denis Twitchett, ed., The Cambridge History of China, Vol. 3, Cambridge University Press, 1979（隋唐政治制度）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e43",
@@ -1009,7 +1025,15 @@
       "tags": [
         "政治",
         "宗教"
-      ]
+      ],
+      "background": "笈多王朝权威衰落后，南亚出现多个地区王国；戒日王统治北印度部分地区而非整个次大陆。",
+      "impact": "寺院、地方王权和梵语文化持续演变，佛教与印度教传统并存。",
+      "debate": "「后笈多」不意味着全南亚同步衰退；旅行记述需与铭文、考古互证。",
+      "sources": [
+        "Upinder Singh, A History of Ancient and Early Medieval India, Pearson, 2008（政治宗教史）",
+        "Romila Thapar, Early India, University of California Press, 2002（地方社会史）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e44",
@@ -1022,7 +1046,15 @@
       "tags": [
         "贸易",
         "宗教"
-      ]
+      ],
+      "background": "七世纪以后室利佛逝依托苏门答腊海路参与马六甲海峡贸易；义净记述佛教学习与航海联系。",
+      "impact": "商贸、寺院与外交往来相互支持，连接南亚、东南亚与中国。",
+      "debate": "其领土控制范围和政权结构仍有争论，外来文献不能直接对应现代国界。",
+      "sources": [
+        "O. W. Wolters, Early Indonesian Commerce, Cornell University Press, 1967（室利佛逝商贸）",
+        "Kenneth R. Hall, A History of Early Southeast Asia, Rowman & Littlefield, 2011（海洋网络）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e45",
@@ -1036,7 +1068,15 @@
         "宗教",
         "思想",
         "交流"
-      ]
+      ],
+      "background": "622年希吉拉与早期穆斯林社群迁徙相关；倭马亚王朝及750年建立的阿拔斯王朝推动跨区域政治重组。",
+      "impact": "商路、行政与学术赞助促进交流，但军事征服与宗教皈依的时间并不相同。",
+      "debate": "早期伊斯兰史料的成书年代需要辨析；「黄金时代」也包含政治分裂和地区差异。",
+      "sources": [
+        "Hugh Kennedy, The Prophet and the Age of the Caliphates, 3rd ed., Routledge, 2015（哈里发政治）",
+        "Chase F. Robinson, Islamic Civilization in Thirty Lives, Thames & Hudson, 2016（人物与社会史）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e46",
@@ -1049,7 +1089,15 @@
       "tags": [
         "政治",
         "宗教"
-      ]
+      ],
+      "background": "东罗马帝国延续于君士坦丁堡；西欧法兰克王权发展，查理曼于800年获帝号。",
+      "impact": "法制、教会组织与手抄文化影响后世，但地中海东西部轨迹不同。",
+      "debate": "「拜占庭」为后世称谓，居民多自认罗马人；800年加冕的合法性在不同政权间存在争论。",
+      "sources": [
+        "Judith Herrin, Byzantium, Princeton University Press, 2007（东罗马连续性）",
+        "Rosamond McKitterick, Charlemagne, Cambridge University Press, 2008（法兰克政治文化）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e47",
@@ -1062,7 +1110,15 @@
       "tags": [
         "贸易",
         "政治"
-      ]
+      ],
+      "background": "西非萨赫勒的加纳王国与跨撒哈拉黄金盐贸易有关；东非沿岸逐步参与印度洋网络，两地发展不同步。",
+      "impact": "远程交换推动政治中心和沿海聚落发展，非洲商人是网络的主动参与者。",
+      "debate": "九世纪前加纳的证据有限；成熟斯瓦希里城市的发展不应被过早投射。",
+      "sources": [
+        "François-Xavier Fauvelle, The Golden Rhinoceros, Princeton University Press, 2018（非洲中世纪证据）",
+        "Mark Horton and John Middleton, The Swahili, Blackwell, 2000（东非沿海贸易社会）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e48",
@@ -1075,7 +1131,15 @@
       "tags": [
         "文化",
         "城市"
-      ]
+      ],
+      "background": "玛雅古典期由蒂卡尔、帕伦克等多个政治中心组成，碑铭记载王室、战争和联盟。",
+      "impact": "文字、历法、建筑和农业留下丰富证据；九世纪部分南部低地中心转型而非玛雅人口消失。",
+      "debate": "干旱、战争与土地利用等衰退解释需分区域评估，不能称整个文明突然消失。",
+      "sources": [
+        "Simon Martin, Ancient Maya Politics, Cambridge University Press, 2020（碑铭与政治网络）",
+        "Arthur Demarest, Ancient Maya, Cambridge University Press, 2004（生态与政治转型）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e49",
@@ -1088,7 +1152,15 @@
       "tags": [
         "迁徙",
         "交流"
-      ]
+      ],
+      "background": "500—900年太平洋各岛航海与文化联系持续演变，但东波利尼西亚大范围初次定居可能更晚。",
+      "impact": "岛际航行、亲缘网络与环境适应支持多样化社会发展。",
+      "debate": "不同岛屿测年证据不一；东波利尼西亚高精度碳测年结果反对把后期定居全部提前。",
+      "sources": [
+        "Patrick V. Kirch, On the Road of the Winds, University of California Press, 2000（区域考古）",
+        "Janet M. Wilmshurst et al., High-precision radiocarbon dating shows recent and rapid initial human colonization of East Polynesia, PNAS 108(5), 2011（初次定居测年）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e50",
@@ -1102,7 +1174,15 @@
         "贸易",
         "技术",
         "政治"
-      ]
+      ],
+      "background": "960年宋朝建立，与辽、西夏并存；1127年后南宋与金对峙，城市商业和印刷等技术持续发展。",
+      "impact": "市场、财政、教育和文书传播改变社会结构，也带来军事与财政压力。",
+      "debate": "纸币出现、流通与国家发行并非同一事件；宋朝并未统一整个东亚。",
+      "sources": [
+        "Dieter Kuhn, The Age of Confucian Rule, Harvard University Press, 2009（宋代制度社会）",
+        "Richard von Glahn, The Economic History of China, Cambridge University Press, 2016（货币与市场）"
+      ],
+      "sourceStatus": "具名研究书目及支持范围；尚未逐页核对或验证在线链接。"
     },
     {
       "id": "e51",
