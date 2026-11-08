@@ -13,6 +13,8 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
 .legend{margin-top:18px;background:#fffefa;border:1px solid #e3e1db;border-radius:15px;padding:18px 20px;font-size:13px;color:#65717a;line-height:1.9}.legend strong{color:var(--ink)}.footer{max-width:980px;margin:25px auto 0;color:#75817e;font-size:12px;line-height:1.8;text-align:center}
 .overlay{position:fixed;inset:0;background:#09262db5;z-index:60;display:none;align-items:center;justify-content:center;padding:17px}.overlay.open{display:flex}.panel{background:white;border-radius:18px;width:min(640px,100%);max-height:min(88vh,900px);overflow:auto;box-shadow:0 24px 70px #0005}.panel .top{display:flex;gap:13px;justify-content:space-between;align-items:start;padding:25px 28px 14px;border-bottom:1px solid #ebefeb}.panel .top h2{font-size:21px;margin:4px 0 0;line-height:1.5}.panel .top small{color:#39737c;font-size:12px;letter-spacing:.1em}.close{background:#f0f3f1;border:0;border-radius:8px;width:34px;height:34px;font-size:23px;color:#50666b}.panel .body{padding:22px 28px 27px;line-height:1.9;color:#374b53;font-size:14px}.meta-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:15px}.tag{background:#e9f3f1;border-radius:7px;padding:3px 8px;font-size:11px;color:#286b70}.detail-text{font-size:14px;line-height:1.95}.note-label{font-size:12px;font-weight:700;display:block;margin:18px 0 8px}.note-input,.form-input,.form-textarea{width:100%;padding:10px 12px;border:1px solid #d5dedb;border-radius:9px;background:#fff;color:#263940}.note-input{min-height:100px;resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-field{margin:0 0 14px}.form-field label{font-size:12px;font-weight:700;display:block;margin-bottom:6px}.form-textarea{min-height:98px;resize:vertical}.help{font-size:11px;color:#7a8987}.panel-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;flex-wrap:wrap}.toast{position:fixed;bottom:23px;left:50%;transform:translateX(-50%);background:#163e46;color:white;padding:11px 18px;border-radius:10px;box-shadow:var(--shadow);font-size:12px;z-index:90;display:none}.toast.show{display:block}
 @media(max-width:720px){:root{--timew:133px;--colw:196px}header{padding:25px 17px}header p{font-size:12px}.toolbar{padding:10px}.search{min-width:155px}.tool-spacer{display:none}.timeline-viewport{max-height:calc(100vh - 170px);border-radius:11px}.time-cell{padding:12px 8px}.time-cell strong{font-size:12px}.time-cell .summary{font-size:10px}.region-head{padding:12px}.region-head strong{font-size:13px}.region-cell{padding:7px}.event-title{font-size:11px}.form-row{grid-template-columns:1fr}.panel .top{padding:19px 18px 12px}.panel .body{padding:18px}.hintline{padding:10px 12px}}
+
+.research{margin:20px 0;padding:18px 20px;background:#f3f8f5;border:1px solid #d8e7df;border-radius:13px}.research h3{font-size:13px;color:#195d61;margin:16px 0 5px}.research h3:first-child{margin-top:0}.research p{margin:4px 0 12px}.research details{border-top:1px solid #c9ded5;padding-top:12px}.research summary{cursor:pointer;font-weight:700;color:#205c61}.research li{margin:8px 0;font-size:12px;overflow-wrap:anywhere}@media(max-width:720px){.research{padding:13px}.toolbar{gap:7px}.toolbar .btn{min-height:40px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.event-card{transition:none}}
 </style>
 </head>
 <body>
@@ -23,6 +25,7 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
 <select id="regionSelect" class="tool-select" aria-label="高亮地区"><option value="all">全部地区</option></select>
 <select id="tagSelect" class="tool-select" aria-label="筛选主题"><option value="all">全部主题</option></select>
 <button class="btn active" id="interactBtn" title="显示或隐藏跨地区互动">↔ 文明互动</button>
+<button class="btn" id="sourcedBtn" aria-pressed="false" title="仅显示已有扩展史料的事件">▣ 深度资料筛选</button>
 <button class="btn" id="compactBtn" title="切换紧凑/详细视图">▦ 紧凑模式</button>
 <div class="tool-spacer"></div>
 <button class="btn primary" id="addBtn">＋ 新增事件</button>
@@ -30,7 +33,7 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
 <button class="btn" id="importBtn">↑ 导入</button><input id="importFile" type="file" accept="application/json,.json" hidden/>
 </div>
 <div class="hintline"><span id="resultCount"><strong>时间线已载入</strong></span><span>提示：横向滚动浏览地区 · 纵向滚动穿越时代 · 点击事件展开详情</span></div>
-<main class="main-layout"><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v1.0 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
+<main class="main-layout"><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v1.1 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="历史事件详情"><div class="panel"><div class="top"><div><small id="modalKicker"></small><h2 id="modalTitle"></h2></div><button class="close" id="closeModal" aria-label="关闭">×</button></div><div class="body" id="modalBody"></div></div></div>
 <div class="toast" id="toast"></div>
 <script id="history-data" type="application/json">{
@@ -180,7 +183,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "农业",
         "技术"
-      ]
+      ],
+      "background": "东亚早期农耕并非单一起点：黄河流域的粟黍利用与长江流域的稻作驯化经历长期实验，农业和采集并存。",
+      "impact": "定居、储藏和人口变化逐步重塑聚落生活；各地驯化时间不能压缩成一个确定年份。",
+      "debate": "具体驯化起点与传播路径仍随植物考古和测年材料更新。",
+      "sources": [
+        "Peter Bellwood，《First Farmers: The Origins of Agricultural Societies》，Blackwell，2005（考古综合研究）",
+        "Dorian Q. Fuller 等，关于亚洲稻作起源与传播的植物考古研究（研究方向提示，具体论文待补）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e2",
@@ -192,7 +203,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "desc": "梅赫尔格尔等遗址显示早期农牧生活。",
       "tags": [
         "农业"
-      ]
+      ],
+      "background": "梅赫尔格尔位于今巴基斯坦俾路支地区，是研究南亚早期农牧、定居与手工业的重要遗址。",
+      "impact": "展示南亚西北部与伊朗高原等区域长期交流，但不能据此把后来的印度河城市文明视为简单直线延续。",
+      "debate": "不同层位年代与文化连续性需要分开讨论。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（跨区域农业比较）",
+        "Gregory L. Possehl，《The Indus Civilization: A Contemporary Perspective》，AltaMira，2002（南亚考古综合）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e3",
@@ -205,7 +224,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "农业",
         "交流"
-      ]
+      ],
+      "background": "东南亚各地新石器转型时间并不一致；部分稻作和家畜随人口迁徙与交流扩散，与本地渔猎采集传统交织。",
+      "impact": "提醒读者不能以单一农业革命解释海岛与大陆东南亚的复杂社会。",
+      "debate": "不同地点的农业出现时间和迁徙解释仍有学术讨论。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（农业传播）",
+        "Charles Higham，《Early Mainland Southeast Asia》，River Books，2014（东南亚考古综述）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e4",
@@ -218,7 +245,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "农业",
         "技术"
-      ]
+      ],
+      "background": "新月沃地包含黎凡特、安纳托利亚和两河上游等不同生态区；谷物种植、动物管理及定居并非同一时间完成。",
+      "impact": "食物生产改变土地利用、劳动组织和社区规模，但不是城市与国家必然出现的单一原因。",
+      "debate": "驯化与定居先后次序因地点和证据类型而异。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（农业起源比较）",
+        "Ian Hodder，《The Leopard’s Tale: Revealing the Mysteries of Çatalhöyük》，Thames & Hudson，2006（安纳托利亚定居生活）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e5",
@@ -231,7 +266,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "农业",
         "交流"
-      ]
+      ],
+      "background": "农业及家畜由安纳托利亚经巴尔干等路径进入欧洲，并与当地狩猎采集群体发生复杂接触。",
+      "impact": "欧洲不同地区出现新的村落、陶器与土地利用方式，传播兼具人口迁移与文化交流。",
+      "debate": "各地过程并不同时，不能视为一次均匀扩张。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（农耕扩散）",
+        "Stephen Shennan，《The First Farmers of Europe》，Cambridge University Press，2018（欧洲新石器化）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e6",
@@ -243,7 +286,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "desc": "采集狩猎、畜牧与不同农业驯化中心并存。",
       "tags": [
         "农业"
-      ]
+      ],
+      "background": "非洲史前生业包含狩猎采集、畜牧、渔业与多个本土作物驯化传统，不能以单一时间线概括整个大陆。",
+      "impact": "萨赫勒及其他地区的生态差异推动多样生计策略；后来的农业变化与气候、贸易和人口互动有关。",
+      "debate": "作物驯化地点及早期年代仍有研究分歧。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（多区域驯化）",
+        "Graham Connah，《African Civilizations: An Archaeological Perspective》，Cambridge University Press，2001（非洲考古多样性）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e7",
@@ -256,7 +307,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "农业",
         "技术"
-      ]
+      ],
+      "background": "美洲的南瓜、玉米、豆类、马铃薯等作物来自不同驯化过程与地区；并非同时出现。",
+      "impact": "多中心农业为美洲社会发展提供不同基础，也为近代跨洋作物交流创造条件。",
+      "debate": "早期栽培、形态驯化与成为主粮是不同阶段。",
+      "sources": [
+        "Bruce D. Smith，《The Emergence of Agriculture》，Scientific American Library，1995（农业起源）",
+        "Peter Bellwood，《First Farmers》，2005（跨洲比较）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e8",
@@ -268,7 +327,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "desc": "长期的土地管理、生态知识与口传文化。",
       "tags": [
         "文化"
-      ]
+      ],
+      "background": "澳大利亚原住民社会拥有长期持续的土地管理、火使用与生态知识传统；不能以缺少欧亚式农耕衡量其复杂性。",
+      "impact": "口传、亲属关系、季节性迁徙和土地照护构成丰富历史实践。",
+      "debate": "具体实践的年代与区域差异需结合考古及原住民知识审慎讨论。",
+      "sources": [
+        "Bill Gammage，《The Biggest Estate on Earth》，Allen & Unwin，2011（土地管理历史解释）",
+        "Lynette Russell，《Roving Mariners》，SUNY Press，2012（原住民历史与跨文化接触；非史前测年来源）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e9",
@@ -281,7 +348,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "政治",
         "文化"
-      ]
+      ],
+      "background": "龙山文化并非统一国家，而是黄河流域等地一系列具有差异的晚期新石器考古文化与社会变化。",
+      "impact": "大型聚落、防御设施和等级分化为理解早期国家形成提供线索，但不能直接等同后世王朝。",
+      "debate": "考古文化与文献中的王朝不能简单一一对应。",
+      "sources": [
+        "Li Liu、Xingcan Chen，《The Archaeology of China: From the Late Paleolithic to the Early Bronze Age》，Cambridge University Press，2012（中国早期考古）",
+        "Kwang-chih Chang，《The Archaeology of Ancient China》，Yale University Press，1986（中国考古史学综述）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e10",
@@ -294,7 +369,15 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "tags": [
         "城市",
         "技术"
-      ]
+      ],
+      "background": "两河流域的乌鲁克城市化涉及神庙机构、专业劳动、长距离物资流动及早期记账技术。",
+      "impact": "城市组织与书写实践对后续西亚政治经济制度影响深远。",
+      "debate": "早期符号何时构成成熟文字及乌鲁克扩张性质仍有争论。",
+      "sources": [
+        "Guillermo Algaze，《Ancient Mesopotamia at the Dawn of Civilization》，University of Chicago Press，2008（乌鲁克城市化解释）",
+        "Marc Van De Mieroop，《A History of the Ancient Near East》，Wiley-Blackwell，2015（古代西亚历史综合）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e11",
@@ -1963,7 +2046,7 @@ const D=JSON.parse(document.getElementById('history-data').textContent);
 const COLORS=['#b75a49','#bc8145','#578b75','#947255','#597da8','#638b5b','#996c9d','#678ca0'];
 const TINTS=['#fcf2ef','#fdf6eb','#f0f7f1','#f9f4ed','#eff5fc','#f2f8ed','#fbf2fb','#eff6f8'];
 const STORAGE='world_history_atlas_v1';const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let state={search:'',region:'all',tag:'all',interactions:true,compact:false};let custom=[],notes={};
+let state={search:'',region:'all',tag:'all',interactions:true,compact:false,sourced:false};let custom=[],notes={};
 try{let saved=JSON.parse(localStorage.getItem(STORAGE)||'{}');if(Array.isArray(saved.custom)) custom=saved.custom.filter(validEvent);if(saved.notes&&typeof saved.notes==='object')notes=saved.notes;}catch(e){}
 function save(){try{localStorage.setItem(STORAGE,JSON.stringify({custom,notes}));}catch(e){notice('本地保存失败，请使用导出备份');}}
 function validEvent(e){return e&&typeof e.title==='string'&&typeof e.p==='number'&&e.p>=0&&e.p<D.periods.length&&D.regions.some(r=>r.id===e.r)}
@@ -1975,9 +2058,10 @@ const tags=[...new Set(D.events.flatMap(e=>e.tags))].sort((a,b)=>a.localeCompare
 $('search').addEventListener('input',e=>{state.search=e.target.value.trim().toLowerCase();render()});$('tagSelect').addEventListener('change',e=>{state.tag=e.target.value;render()});$('regionSelect').addEventListener('change',e=>{state.region=e.target.value;render()});
 $('periodSelect').addEventListener('change',e=>{let target=$('period-'+e.target.value);if(target){let v=$('viewport');v.scrollTo({top:target.offsetTop-75,behavior:'smooth'})}});
 $('interactBtn').onclick=()=>{state.interactions=!state.interactions;$('interactBtn').classList.toggle('active',state.interactions);render()};$('compactBtn').onclick=()=>{state.compact=!state.compact;$('compactBtn').classList.toggle('active',state.compact);$('compactBtn').textContent=state.compact?'▤ 详细模式':'▦ 紧凑模式';render()};
+$('sourcedBtn').onclick=()=>{state.sourced=!state.sourced;$('sourcedBtn').classList.toggle('active',state.sourced);$('sourcedBtn').setAttribute('aria-pressed',String(state.sourced));render()};
 $('addBtn').onclick=addDialog;$('exportBtn').onclick=exportData;$('importBtn').onclick=()=>$('importFile').click();$('importFile').addEventListener('change',importData);
 $('closeModal').onclick=close;$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});render();}
-function matched(e){if(state.tag!=='all'&&!e.tags.includes(state.tag))return false;if(!state.search)return true;let s=[e.title,e.dates,e.people,e.desc,...e.tags,D.regions.find(r=>r.id===e.r)?.name].join(' ').toLowerCase();return s.includes(state.search)}
+function matched(e){if(state.sourced&&!e.background)return false;if(state.tag!=='all'&&!e.tags.includes(state.tag))return false;if(!state.search)return true;let s=[e.title,e.dates,e.people,e.desc,e.background,e.impact,e.debate,...e.tags,D.regions.find(r=>r.id===e.r)?.name].join(' ').toLowerCase();return s.includes(state.search)}
 function render(){let root=$('timeline');root.innerHTML='';let corner=document.createElement('div');corner.className='corner';corner.innerHTML='<strong>时间 ↓ / 地区 →</strong><small>同一行 = 同一时期</small>';root.append(corner);
 D.regions.forEach((r,j)=>{let h=document.createElement('div');h.className='region-head'+(state.region!=='all'&&state.region!==r.id?' dim':'');h.style.setProperty('--region-color',COLORS[j]);h.innerHTML=`<strong>${esc(r.name)}</strong><small>${esc(r.desc)}</small>`;root.append(h)});
 let count=0;D.periods.forEach(p=>{let time=document.createElement('div');time.className='time-cell'+(state.compact?' compact':'');time.id='period-'+p.id;time.innerHTML=`<span class="date">${esc(p.dates)}</span><strong>${esc(p.title)}</strong><div class="summary">${esc(p.summary)}</div>`;root.append(time);
@@ -1989,7 +2073,7 @@ if(state.interactions){let its=D.interactions.filter(i=>i.p===p.id&&(!state.sear
 function regionName(id){return D.regions.find(r=>r.id===id)?.name||id}
 function modal(k,t,body){$('modalKicker').textContent=k;$('modalTitle').textContent=t;$('modalBody').innerHTML=body;$('overlay').classList.add('open');$('closeModal').focus()}
 function close(){$('overlay').classList.remove('open')}
-function detail(e){let region=regionName(e.r),era=D.periods[e.p];modal(region+' · '+era.dates,e.title,`<div class="meta-row"><span class="tag">${esc(e.dates)}</span>${e.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${e.custom?'<span class="tag">自定义</span>':''}</div>${e.people?`<p><strong>代表人物：</strong>${esc(e.people)}</p>`:''}<p class="detail-text">${esc(e.desc)}</p><label class="note-label" for="noteArea">我的补充 / 读书笔记（仅保存在本机）</label><textarea class="note-input" id="noteArea" placeholder="记录史料、问题、因果关系与新的观点…">${esc(notes[e.id]||'')}</textarea><div class="panel-actions">${e.custom?'<button class="btn" id="deleteEvent">删除自定义事件</button>':''}<button class="btn primary" id="saveNote">保存笔记</button></div>`);
+function detail(e){let extra=e.background?`<section class="research"><h3>历史背景</h3><p>${esc(e.background)}</p><h3>因果与影响</h3><p>${esc(e.impact)}</p><h3>证据边界与争议</h3><p>${esc(e.debate)}</p><details><summary>参考书目与证据说明（${(e.sources||[]).length} 项）</summary><p class="help">${esc(e.sourceStatus||'参考资料供进一步核查；非逐句引文。')}</p><ol>${(e.sources||[]).map(s=>`<li>${esc(s)}</li>`).join('')}</ol></details></section>`:'';let region=regionName(e.r),era=D.periods[e.p];modal(region+' · '+era.dates,e.title,`<div class="meta-row"><span class="tag">${esc(e.dates)}</span>${e.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${e.custom?'<span class="tag">自定义</span>':''}</div>${e.people?`<p><strong>代表人物：</strong>${esc(e.people)}</p>`:''}<p class="detail-text">${esc(e.desc)}</p>${extra}<label class="note-label" for="noteArea">我的补充 / 读书笔记（仅保存在本机）</label><textarea class="note-input" id="noteArea" placeholder="记录史料、问题、因果关系与新的观点…">${esc(notes[e.id]||'')}</textarea><div class="panel-actions">${e.custom?'<button class="btn" id="deleteEvent">删除自定义事件</button>':''}<button class="btn primary" id="saveNote">保存笔记</button></div>`);
 $('saveNote').onclick=()=>{notes[e.id]=$('noteArea').value;save();notice('笔记已保存到本地')};if(e.custom)$('deleteEvent').onclick=()=>{if(confirm('确认删除这条自定义事件？')){custom=custom.filter(x=>x.id!==e.id);delete notes[e.id];save();close();render();notice('已删除')}}}
 function interactionDetail(i){modal('文明互动 · '+D.periods[i.p].dates,i.name,`<div class="meta-row"><span class="tag">${esc(regionName(i.frm))}</span><span class="tag">↔</span><span class="tag">${esc(regionName(i.to))}</span><span class="tag">${esc(i.tags)}</span></div><p class="detail-text">${esc(i.detail)}</p><p class="help">跨文明互动经常跨越数十年乃至数百年，此处只是便于比较的时期标注。</p><label class="note-label">我的补充</label><textarea id="noteArea" class="note-input" placeholder="添加这段交流的具体案例或历史证据…">${esc(notes[i.id]||'')}</textarea><div class="panel-actions"><button class="btn primary" id="saveNote">保存笔记</button></div>`);$('saveNote').onclick=()=>{notes[i.id]=$('noteArea').value;save();notice('笔记已保存')}}
 function addDialog(){modal('知识库 · 扩展','新增一条历史事件',`<div class="form-row"><div class="form-field"><label for="fPeriod">所属历史阶段</label><select class="form-input" id="fPeriod">${D.periods.map(p=>`<option value="${p.id}">${esc(p.dates)} · ${esc(p.title)}</option>`).join('')}</select></div><div class="form-field"><label for="fRegion">所属地区</label><select class="form-input" id="fRegion">${D.regions.map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join('')}</select></div></div><div class="form-field"><label>事件名称 *</label><input class="form-input" id="fTitle" maxlength="100" placeholder="例：郑和下西洋"/></div><div class="form-row"><div class="form-field"><label>具体年代</label><input class="form-input" id="fDate" maxlength="90" placeholder="例：1405—1433年"/></div><div class="form-field"><label>代表人物</label><input class="form-input" id="fPeople" maxlength="140" placeholder="例：郑和"/></div></div><div class="form-field"><label>主题（顿号分隔）</label><input class="form-input" id="fTags" maxlength="100" placeholder="贸易、航海、交流"/></div><div class="form-field"><label>历史背景与意义</label><textarea class="form-textarea" id="fDesc" maxlength="1500" placeholder="事件发生的背景、经过、因果关系、影响…"></textarea></div><p class="help">新增内容自动保存在当前浏览器，请定期点击“导出数据”备份。可通过导入 JSON 在别的设备上恢复。</p><div class="panel-actions"><button class="btn primary" id="submitEvent">添加到时间线</button></div>`);
