@@ -352,7 +352,15 @@
       "tags": [
         "农业",
         "交流"
-      ]
+      ],
+      "background": "大陆东南亚稻作扩散与地方采集、渔猎并存；海岛区域的陶器与迁徙过程不能与大陆稻作视为同一时间表。",
+      "impact": "作物、器物与人口交流改变部分聚落的生计组合，但不同生态区长期保持多样策略。",
+      "debate": "约前2500年后是宽泛的展示范围；具体遗址测年与稻作是否已经普及仍需分别核查。",
+      "sources": [
+        "Charles Higham，《Early Mainland Southeast Asia》，River Books，2014（考古综合）",
+        "Peter Bellwood，《First Farmers》，Blackwell，2005（农业传播比较）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e12",
@@ -365,7 +373,15 @@
       "tags": [
         "城市",
         "文字"
-      ]
+      ],
+      "background": "乌鲁克等两河聚落在前四千纪逐渐形成大规模公共建筑、专业分工和复杂行政记录；早期文字主要用于管理与记账。",
+      "impact": "城市治理与记录技术支持资源调配和制度记忆；文字的出现并不意味着所有居民立即识字。",
+      "debate": "城市形成、国家出现与楔形文字成熟不是单一瞬间；最早记录的具体功能仍依赖泥板语境。",
+      "sources": [
+        "Marc Van De Mieroop，《A History of the Ancient Near East》，Wiley-Blackwell，2015（两河政治社会综合）",
+        "Denise Schmandt-Besserat，《Before Writing》，University of Texas Press，1992（早期记录系统解释）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e13",
@@ -378,7 +394,15 @@
       "tags": [
         "政治",
         "文化"
-      ]
+      ],
+      "background": "尼罗河谷的地方政治实体在前四千纪末逐步整合；早王朝和古王国时期形成行政网络，金字塔主要属于其后古王国的王室工程。",
+      "impact": "集中组织推动灌溉管理、征税和大型纪念性工程，同时依赖地方精英与季节性劳动力。",
+      "debate": "约前3100年是传统统一年代的近似标识；不能把金字塔建设误写成统一当年的事件。",
+      "sources": [
+        "Ian Shaw 编，《The Oxford History of Ancient Egypt》，Oxford University Press，2000（王朝年代与制度综述）",
+        "Toby Wilkinson，《Early Dynastic Egypt》，Routledge，1999（早王朝政治形成）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e14",
@@ -391,7 +415,15 @@
       "tags": [
         "政治",
         "交流"
-      ]
+      ],
+      "background": "克里特岛米诺斯宫殿体系与希腊大陆迈锡尼宫殿社会先后发展，彼此并非一个统一政权；线形文字A与线形文字B证据性质不同。",
+      "impact": "海上贸易、工艺传播和宫殿再分配制度塑造爱琴海世界，晚青铜时代多处宫殿体系遭遇危机。",
+      "debate": "线形文字A尚未被普遍释读；约前1200年前后的崩溃原因存在战争、环境与系统性失稳等多种解释。",
+      "sources": [
+        "Oliver Dickinson，《The Aegean Bronze Age》，Cambridge University Press，1994（考古综述）",
+        "Eric H. Cline，《1177 B.C.: The Year Civilization Collapsed》，Princeton University Press，2014（晚青铜危机解释）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e15",
@@ -404,7 +436,15 @@
       "tags": [
         "政治",
         "交流"
-      ]
+      ],
+      "background": "努比亚尼罗河中游的克尔马文化形成重要政治与仪式中心，与埃及既有商品往来，也有军事竞争；不能将其仅视为埃及边缘。",
+      "impact": "黄金、牲畜和跨沙漠通道使东北非形成双向交流网络，克尔马政权体现本地国家形成路径。",
+      "debate": "克尔马政治势力与埃及王朝的边界随时代变化，材料中埃及文献视角需与努比亚考古证据对读。",
+      "sources": [
+        "Derek A. Welsby，《The Kingdom of Kush》，British Museum Press，1996（努比亚政治考古）",
+        "David N. Edwards，《The Nubian Past》，Routledge，2004（努比亚历史综合）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e16",
@@ -417,7 +457,15 @@
       "tags": [
         "城市",
         "文化"
-      ]
+      ],
+      "background": "今秘鲁苏佩河谷的卡拉尔及周边聚落出现大型平台建筑、广场和组织性劳动，年代大致在前第三千纪。",
+      "impact": "说明美洲不同于欧亚的早期复杂社会发展道路；公共建筑不必与旧大陆式文字和陶器同时出现。",
+      "debate": "卡拉尔是否应直接称作城市、其政治整合范围和经济基础仍有争论；碳测年应按遗址层位理解。",
+      "sources": [
+        "Ruth Shady Solís 等，Caral-Supe 相关考古研究（作者与研究项目线索，具体论文待核）",
+        "Jonathan Haas 等，安第斯晚期古风时代复杂社会研究（研究线索，具体论文待核）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e17",
@@ -430,7 +478,15 @@
       "tags": [
         "迁徙",
         "交流"
-      ]
+      ],
+      "background": "南岛语系相关航海扩散涉及台湾、菲律宾及岛屿东南亚的长期迁徙和语言接触；拉皮塔文化扩散属于更晚且可区分的阶段。",
+      "impact": "造船、航海、作物与家畜传播帮助建立岛屿之间的亲缘和交换网络，也与原有居民发生复杂互动。",
+      "debate": "语言传播不等于单次人口替换；不同岛屿的考古、语言与遗传证据并不完全同步。",
+      "sources": [
+        "Peter Bellwood，《The Austronesians》，ANU E Press，2006（南岛研究论文集）",
+        "Patrick V. Kirch，《On the Road of the Winds》，University of California Press，2000（太平洋考古）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e18",
@@ -443,7 +499,15 @@
       "tags": [
         "政治",
         "思想"
-      ]
+      ],
+      "background": "西周建立后以王室宗亲和盟属的封建网络维系统治，青铜礼器铭文与后世传世文献提供不同角度的材料；东迁后王权结构改变。",
+      "impact": "礼制、政治合法性与地方诸侯网络深刻影响后来的政治思想，春秋诸侯竞争加速制度调整。",
+      "debate": "约前1046年的断代并非所有学者一致接受；‘宗法’的后世概念不可不加区别地套用于全部西周实践。",
+      "sources": [
+        "Li Feng，《Landscape and Power in Early China》，Cambridge University Press，2006（西周政治地理）",
+        "Edward L. Shaughnessy，《Sources of Western Zhou History》，University of California Press，1991（铭文与史料）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e19",
@@ -456,7 +520,15 @@
       "tags": [
         "思想",
         "政治"
-      ]
+      ],
+      "background": "晚期吠陀传统与恒河流域定居、铁器利用及政治共同体发展相互交织；文本形成和传抄历时很长。",
+      "impact": "祭祀与哲学讨论为后来的婆罗门传统和奥义书思想提供基础，政治与社会组织呈现区域差异。",
+      "debate": "吠陀文献的口传层次与考古文化不能简单一一对应；年代范围属于近似学术分期。",
+      "sources": [
+        "Romila Thapar，《Early India》，University of California Press，2002（早期印度社会史）",
+        "Michael Witzel，关于吠陀文本分层与历史地理的研究（研究线索，具体论文待核）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e20",
@@ -469,7 +541,15 @@
       "tags": [
         "技术",
         "交流"
-      ]
+      ],
+      "background": "东南亚青铜与铁器技术在不同地区通过本地实践和长距离交流逐渐发展；越南北部东山文化的典型铜鼓主要属于前一千纪后段。",
+      "impact": "金属工艺、河海贸易与地方权力象征共同发展，铜鼓成为研究跨地区互动的重要物证。",
+      "debate": "本条原题涵盖东山前史与金属技术，不应将全部前一千纪金属遗址直接归为成熟东山文化。",
+      "sources": [
+        "Charles Higham，《Early Mainland Southeast Asia》，River Books，2014（区域考古）",
+        "Charles Higham，《The Bronze Age of Southeast Asia》，Cambridge University Press，1996（青铜时代研究）"
+      ],
+      "sourceStatus": "研究书目线索：需继续核验具体页码与每项论断；带‘待核’者不是已核实的正式引用。"
     },
     {
       "id": "e21",
