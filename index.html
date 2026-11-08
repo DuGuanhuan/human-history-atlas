@@ -997,7 +997,8 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
       "people": "帕查库特克",
       "desc": "墨西哥盆地与安第斯高地帝国形成。",
       "tags": [
-        "政治",        "城市"
+        "政治",
+        "城市"
       ]
     },
     {
@@ -1996,5 +1997,6 @@ $('submitEvent').onclick=()=>{let title=$('fTitle').value.trim();if(!title){noti
 function exportData(){let data={app:'world-history-atlas',version:1,exportedAt:new Date().toISOString(),custom,notes};let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='世界历史时间线_我的补充与笔记.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);notice('已导出 JSON 备份')}
 async function importData(ev){let f=ev.target.files?.[0];if(!f)return;try{let data=JSON.parse(await f.text());if(data.app!=='world-history-atlas'||!Array.isArray(data.custom)||typeof data.notes!=='object'||data.notes===null)throw Error('格式不符');if(!confirm(`将导入 ${data.custom.length} 条自定义事件和笔记，并与当前数据合并。继续？`))return;let existing=new Set(custom.map(e=>e.id));for(let e of data.custom){if(validEvent(e)&&!existing.has(e.id)){custom.push({...e,custom:true});existing.add(e.id)}}notes={...notes,...data.notes};save();render();notice('导入成功')}catch(e){notice('导入失败：不是兼容的历史时间线 JSON 文件')}finally{ev.target.value=''}}
 init();
-})();</script>
+})();
+</script>
 </body></html>
