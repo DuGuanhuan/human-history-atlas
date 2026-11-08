@@ -145,7 +145,15 @@
       "tags": [
         "农业",
         "技术"
-      ]
+      ],
+      "background": "东亚早期农耕并非单一起点：黄河流域的粟黍利用与长江流域的稻作驯化经历长期实验，农业和采集并存。",
+      "impact": "定居、储藏和人口变化逐步重塑聚落生活；各地驯化时间不能压缩成一个确定年份。",
+      "debate": "具体驯化起点与传播路径仍随植物考古和测年材料更新。",
+      "sources": [
+        "Peter Bellwood，《First Farmers: The Origins of Agricultural Societies》，Blackwell，2005（考古综合研究）",
+        "Dorian Q. Fuller 等，关于亚洲稻作起源与传播的植物考古研究（研究方向提示，具体论文待补）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e2",
@@ -157,7 +165,15 @@
       "desc": "梅赫尔格尔等遗址显示早期农牧生活。",
       "tags": [
         "农业"
-      ]
+      ],
+      "background": "梅赫尔格尔位于今巴基斯坦俾路支地区，是研究南亚早期农牧、定居与手工业的重要遗址。",
+      "impact": "展示南亚西北部与伊朗高原等区域长期交流，但不能据此把后来的印度河城市文明视为简单直线延续。",
+      "debate": "不同层位年代与文化连续性需要分开讨论。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（跨区域农业比较）",
+        "Gregory L. Possehl，《The Indus Civilization: A Contemporary Perspective》，AltaMira，2002（南亚考古综合）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e3",
@@ -170,7 +186,15 @@
       "tags": [
         "农业",
         "交流"
-      ]
+      ],
+      "background": "东南亚各地新石器转型时间并不一致；部分稻作和家畜随人口迁徙与交流扩散，与本地渔猎采集传统交织。",
+      "impact": "提醒读者不能以单一农业革命解释海岛与大陆东南亚的复杂社会。",
+      "debate": "不同地点的农业出现时间和迁徙解释仍有学术讨论。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（农业传播）",
+        "Charles Higham，《Early Mainland Southeast Asia》，River Books，2014（东南亚考古综述）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e4",
@@ -183,7 +207,15 @@
       "tags": [
         "农业",
         "技术"
-      ]
+      ],
+      "background": "新月沃地包含黎凡特、安纳托利亚和两河上游等不同生态区；谷物种植、动物管理及定居并非同一时间完成。",
+      "impact": "食物生产改变土地利用、劳动组织和社区规模，但不是城市与国家必然出现的单一原因。",
+      "debate": "驯化与定居先后次序因地点和证据类型而异。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（农业起源比较）",
+        "Ian Hodder，《The Leopard’s Tale: Revealing the Mysteries of Çatalhöyük》，Thames & Hudson，2006（安纳托利亚定居生活）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e5",
@@ -196,7 +228,15 @@
       "tags": [
         "农业",
         "交流"
-      ]
+      ],
+      "background": "农业及家畜由安纳托利亚经巴尔干等路径进入欧洲，并与当地狩猎采集群体发生复杂接触。",
+      "impact": "欧洲不同地区出现新的村落、陶器与土地利用方式，传播兼具人口迁移与文化交流。",
+      "debate": "各地过程并不同时，不能视为一次均匀扩张。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（农耕扩散）",
+        "Stephen Shennan，《The First Farmers of Europe》，Cambridge University Press，2018（欧洲新石器化）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e6",
@@ -208,7 +248,15 @@
       "desc": "采集狩猎、畜牧与不同农业驯化中心并存。",
       "tags": [
         "农业"
-      ]
+      ],
+      "background": "非洲史前生业包含狩猎采集、畜牧、渔业与多个本土作物驯化传统，不能以单一时间线概括整个大陆。",
+      "impact": "萨赫勒及其他地区的生态差异推动多样生计策略；后来的农业变化与气候、贸易和人口互动有关。",
+      "debate": "作物驯化地点及早期年代仍有研究分歧。",
+      "sources": [
+        "Peter Bellwood，《First Farmers》，2005（多区域驯化）",
+        "Graham Connah，《African Civilizations: An Archaeological Perspective》，Cambridge University Press，2001（非洲考古多样性）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e7",
@@ -221,7 +269,15 @@
       "tags": [
         "农业",
         "技术"
-      ]
+      ],
+      "background": "美洲的南瓜、玉米、豆类、马铃薯等作物来自不同驯化过程与地区；并非同时出现。",
+      "impact": "多中心农业为美洲社会发展提供不同基础，也为近代跨洋作物交流创造条件。",
+      "debate": "早期栽培、形态驯化与成为主粮是不同阶段。",
+      "sources": [
+        "Bruce D. Smith，《The Emergence of Agriculture》，Scientific American Library，1995（农业起源）",
+        "Peter Bellwood，《First Farmers》，2005（跨洲比较）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e8",
@@ -233,7 +289,15 @@
       "desc": "长期的土地管理、生态知识与口传文化。",
       "tags": [
         "文化"
-      ]
+      ],
+      "background": "澳大利亚原住民社会拥有长期持续的土地管理、火使用与生态知识传统；不能以缺少欧亚式农耕衡量其复杂性。",
+      "impact": "口传、亲属关系、季节性迁徙和土地照护构成丰富历史实践。",
+      "debate": "具体实践的年代与区域差异需结合考古及原住民知识审慎讨论。",
+      "sources": [
+        "Bill Gammage，《The Biggest Estate on Earth》，Allen & Unwin，2011（土地管理历史解释）",
+        "Lynette Russell，《Roving Mariners》，SUNY Press，2012（原住民历史与跨文化接触；非史前测年来源）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e9",
@@ -246,7 +310,15 @@
       "tags": [
         "政治",
         "文化"
-      ]
+      ],
+      "background": "龙山文化并非统一国家，而是黄河流域等地一系列具有差异的晚期新石器考古文化与社会变化。",
+      "impact": "大型聚落、防御设施和等级分化为理解早期国家形成提供线索，但不能直接等同后世王朝。",
+      "debate": "考古文化与文献中的王朝不能简单一一对应。",
+      "sources": [
+        "Li Liu、Xingcan Chen，《The Archaeology of China: From the Late Paleolithic to the Early Bronze Age》，Cambridge University Press，2012（中国早期考古）",
+        "Kwang-chih Chang，《The Archaeology of Ancient China》，Yale University Press，1986（中国考古史学综述）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e10",
@@ -259,7 +331,15 @@
       "tags": [
         "城市",
         "技术"
-      ]
+      ],
+      "background": "两河流域的乌鲁克城市化涉及神庙机构、专业劳动、长距离物资流动及早期记账技术。",
+      "impact": "城市组织与书写实践对后续西亚政治经济制度影响深远。",
+      "debate": "早期符号何时构成成熟文字及乌鲁克扩张性质仍有争论。",
+      "sources": [
+        "Guillermo Algaze，《Ancient Mesopotamia at the Dawn of Civilization》，University of Chicago Press，2008（乌鲁克城市化解释）",
+        "Marc Van De Mieroop，《A History of the Ancient Near East》，Wiley-Blackwell，2015（古代西亚历史综合）"
+      ],
+      "sourceStatus": "书目线索（尚未逐条核对页码和原始证据）"
     },
     {
       "id": "e11",
