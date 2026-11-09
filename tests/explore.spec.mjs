@@ -62,6 +62,23 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await expect(page.locator('#journeyNote')).toHaveValue(text);
    await expect(page.locator('.deep-feature')).toBeVisible();
   });
+  test('八区展开全部事件 → 详情 → 返回保留展开状态',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#momentPeriod').selectOption({index:0});
+   const expand=page.locator('#momentGrid .moment-expand').first();
+   await expect(expand).toBeVisible();
+   const card=expand.locator('xpath=..');
+   const before=await card.locator('.moment-event').count();
+   await expand.click();
+   await expect(card.locator('.moment-expand')).toHaveAttribute('aria-expanded','true');
+   const after=await card.locator('.moment-event').count();
+   expect(after).toBeGreaterThan(before);
+   await card.locator('.moment-event').last().click();
+   await expect(page.locator('#overlay')).toHaveClass(/open/);
+   await page.keyboard.press('Escape');
+   await expect(card.locator('.moment-expand')).toHaveAttribute('aria-expanded','true');
+   await page.screenshot({path:'test-results/'+device.name+'-expanded-regions.png',fullPage:true});
+  });
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
    await page.goto(pageUrl);
    await page.locator('#search').fill('苏美尔');
