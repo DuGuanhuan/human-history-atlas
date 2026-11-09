@@ -7,6 +7,8 @@
 - `npm install --no-save --package-lock=false @playwright/test@1.56.1 && npx playwright install chromium && npx playwright test tests/explore.spec.mjs`：本地双视口Chromium回归；运行需要Node和浏览器下载权限；CI 固定 ubuntu-24.04，避免 ubuntu-latest 升级到不受 Playwright 1.56.1 支持的 Ubuntu 26.04。
 - `.github/workflows/atlas-quality.yml`：在GitHub Actions自动运行并保留失败截图。2026-11-10 已在 GitHub Actions run 42697006602 验证静态检查成功、Chromium 桌面/手机共 12 项通过；后续提交仍须查看各自运行结果。
 
+- `node tests/validate.mjs` 还会生成 `test-results/content-audit.json`：逐条列出121事件的地区、时期、正文等级、篇幅和深读来源条目数；这只是编辑工作量审计，**不代表来源链接已经打开核验**。
+
 ## 项目文件
 - `index.html` — 可交互网站入口（当前完整 HTML）
 - `history-data.json` — 从旧版生成流程保留的历史数据快照，供后续模块化重构；目前网站运行**不依赖**它，避免误认为已自动同步
