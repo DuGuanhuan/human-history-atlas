@@ -2,6 +2,11 @@
 
 可离线运行的交互式世界历史时间线项目。`index.html` 为当前单文件版本，直接用浏览器打开即可。
 
+## 可重复质量验证
+- `node tests/validate.mjs`：不依赖第三方包的静态JS与数据一致性验证。
+- `npm install --no-save --package-lock=false @playwright/test@1.56.1 && npx playwright install chromium && npx playwright test tests/explore.spec.mjs`：本地双视口Chromium回归；运行需要Node和浏览器下载权限。
+- `.github/workflows/atlas-quality.yml`：在GitHub Actions自动运行并保留失败截图。配置存在不代表测试已通过；应查看实际运行结果。
+
 ## 项目文件
 - `index.html` — 可交互网站入口（当前完整 HTML）
 - `history-data.json` — 从旧版生成流程保留的历史数据快照，供后续模块化重构；目前网站运行**不依赖**它，避免误认为已自动同步
