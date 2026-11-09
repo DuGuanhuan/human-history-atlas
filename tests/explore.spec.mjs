@@ -34,6 +34,33 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await expect(page.locator('.deep-sources a').first()).toHaveAttribute('href',/^https:\/\//);
    await page.screenshot({path:'test-results/'+device.name+'-evidence.png'});
   });
+
+  test('八区聚焦 → 恢复全景 → 保持同期阶段',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#momentPeriod').selectOption({index:3});
+   const period=await page.locator('#momentPeriod').inputValue();
+   await page.locator('#momentFilter button').nth(2).click();
+   await expect(page.locator('#momentFilter button').nth(2)).toHaveAttribute('aria-pressed','true');
+   await expect(page.locator('#momentGrid .moment-region')).toHaveCount(8);
+   await page.locator('#momentClear').click();
+   await expect(page.locator('#momentFilter button[aria-pressed="true"]')).toHaveCount(0);
+   await expect(page.locator('#momentPeriod')).toHaveValue(period);
+   await page.screenshot({path:'test-results/'+device.name+'-regions.png',fullPage:true});
+  });
+  test('专题来源 → 笔记保存 → 重新进入仍存在',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#journeyGrid [data-journey]').first().click();
+   await expect(page.locator('.deep-feature')).toBeVisible();
+   const text='回归测试 '+device.name+'：阅读来源后保留笔记';
+   await page.locator('#journeyNote').fill(text);
+   await page.locator('#journeySaveNote').click();
+   await page.locator('.deep-sources summary').click();
+   await expect(page.locator('.deep-sources a').first()).toHaveAttribute('href',/^https:\/\//);
+   await page.keyboard.press('Escape');
+   await page.locator('#journeyGrid [data-journey]').first().click();
+   await expect(page.locator('#journeyNote')).toHaveValue(text);
+   await expect(page.locator('.deep-feature')).toBeVisible();
+  });
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
    await page.goto(pageUrl);
    await page.locator('#search').fill('苏美尔');
