@@ -291,6 +291,10 @@ body.dialog-open{overflow:hidden}.overlay.open .panel{overscroll-behavior:contai
 .journey-comparison{padding:18px 0}.journey-comparison>h3{font-family:Georgia,"Noto Serif SC",serif;font-size:25px;color:#174d56}.journey-comparison>p{line-height:1.9;max-width:760px}.journey-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.journey-evidence-card{border:1px solid #d9e3dc;background:#f8faf6;border-radius:12px;padding:18px;min-width:0}.journey-evidence-card h4{color:#21525a;font-size:17px;line-height:1.5}.journey-evidence-card p{font-size:13px;line-height:1.85}.journey-evidence-card .btn{margin-top:12px;white-space:normal;text-align:left}.journey-warning{border-left:4px solid #b48b51;background:#f8f0df;padding:15px}.journey-note-panel{margin:22px 0;padding:20px;background:#f0f5f3;border-radius:12px}.journey-note-panel label{display:block;margin-bottom:10px}.journey-note-panel textarea{width:100%;min-height:95px}.journey-resume{margin:12px 0 18px;background:#f0e8d5}.journey-comparison li{line-height:1.9;margin-bottom:8px}
 @media(max-width:800px){.journey-evidence-grid{grid-template-columns:1fr}.journey-evidence-card{padding:15px}.journey-comparison>h3{font-size:22px}}
 .moment-depth{display:inline-block!important;width:fit-content;margin-top:7px;padding:3px 7px;border-radius:5px;background:#e7f1ed;color:#245c57!important;font-size:10px!important;font-weight:700}.moment-event:has(.moment-depth){min-height:92px}
+
+/* v3.9: readable, expandable evidence-first region cards */
+.moment-intro{display:block;margin-top:6px;color:#51636a;font-size:12px;line-height:1.65;font-weight:400}.moment-expand{margin-top:9px;min-height:40px;width:100%;text-align:center}.moment-region .moment-event{margin-top:8px}.moment-region .moment-event:focus-visible{outline:3px solid #347e86;outline-offset:2px}
+@media(max-width:600px){.moment-intro{font-size:13px;line-height:1.75}.moment-expand{min-height:44px}}
 </style>
 </head>
 <body>
@@ -408,6 +412,17 @@ function drawMomentNetwork(period,relations){
  const filters=$('momentFilter');filters.replaceChildren();D.regions.forEach(r=>{const b=document.createElement('button');b.type='button';b.textContent=r.name;b.setAttribute('aria-pressed',String(focusedMomentRegion===r.id));b.onclick=()=>{focus(r.id);filters.children[D.regions.findIndex(x=>x.id===r.id)]?.focus()};filters.append(b)});
  $('momentClear').onclick=()=>{focusedMomentRegion=null;renderMoment();$('momentClear').focus()};
 }
+// Expanded regions retain their place while users inspect events and evidence.
+const expandedMomentRegions=new Set();
+function momentEventButton(e){
+ const b=document.createElement('button');b.type='button';b.className='moment-event';
+ const strong=document.createElement('strong');strong.textContent=e.title;
+ const date=document.createElement('span');date.textContent=e.dates;
+ const level=document.createElement('span');level.className='moment-depth';
+ level.textContent=e.deepDive?'深度专题 · 来源待逐句核验':e.story?'事件导读':'概要待完善';
+ const intro=document.createElement('span');intro.className='moment-intro';intro.textContent=e.desc||'';
+ b.append(strong,date,level,intro);b.onclick=()=>detail(e);return b;
+}
 function renderMoment(){
  const select=$('momentPeriod'),p=D.periods.find(x=>String(x.id)===select.value);if(!p)return;
  $('momentContext').innerHTML='<strong>'+esc(p.dates)+' · '+esc(p.title)+'</strong><span>'+esc(p.summary)+'</span>';
@@ -418,8 +433,22 @@ function renderMoment(){
   const events=allEvents().filter(e=>e.p===p.id&&e.r===r.id);
   const count=document.createElement('small');count.textContent=events.length+' 条已收录事件';card.append(count);
   if(!events.length){const empty=document.createElement('p');empty.className='moment-empty';empty.textContent='此阶段暂无收录；不代表没有历史。';card.append(empty)}
-  events.slice(0,2).forEach(e=>{const b=document.createElement('button');b.type='button';b.className='moment-event';const strong=document.createElement('strong');strong.textContent=e.title;const date=document.createElement('span');date.textContent=e.dates;const level=document.createElement('span');level.className='moment-depth';level.textContent=e.deepDive?'深度专题 · 来源待逐句核验':e.story?'事件导读':'概要待完善';b.append(strong,date,level);b.onclick=()=>detail(e);card.append(b)});
-  if(events.length>2){const more=document.createElement('button');more.className='moment-link';more.type='button';more.textContent='查看本地区全部 '+events.length+' 条 →';more.onclick=()=>periodAtlas(p.id);card.append(more)}
+  const expanded=expandedMomentRegions.has(r.id);
+  const visible=expanded?events:events.slice(0,2);
+  visible.forEach(e=>card.append(momentEventButton(e)));
+  if(events.length>2){
+   const more=document.createElement('button');more.className='moment-link moment-expand';more.type='button';
+   more.setAttribute('aria-expanded',String(expanded));
+   more.setAttribute('aria-label',(expanded?'收起':'展开')+r.name+'的历史事件');
+   more.textContent=expanded?'收起至前 2 条 ↑':'展开本地区全部 '+events.length+' 条 ↓';
+   more.onclick=()=>{
+    if(expanded)expandedMomentRegions.delete(r.id);else expandedMomentRegions.add(r.id);
+    renderMoment();
+    const regionCard=[...$('momentGrid').children][j];
+    regionCard?.querySelector('.moment-expand')?.focus({preventScroll:true});
+   };
+   card.append(more);
+  }
   grid.append(card);
  });
  const links=$('momentLinks');links.replaceChildren();const items=relations.filter(i=>!focusedMomentRegion||i.frm===focusedMomentRegion||i.to===focusedMomentRegion);
@@ -428,7 +457,7 @@ function renderMoment(){
 }
 function initMoment(){
  const select=$('momentPeriod');D.periods.forEach(p=>select.add(new Option(p.dates+' · '+p.title,p.id)));
- select.value='7';select.addEventListener('change',()=>{focusedMomentRegion=null;renderMoment()});renderMoment();
+ select.value='7';select.addEventListener('change',()=>{focusedMomentRegion=null;expandedMomentRegions.clear();renderMoment()});renderMoment();
 }
 
 
