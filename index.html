@@ -286,6 +286,10 @@ body.dialog-open{overflow:hidden}.overlay.open .panel{overscroll-behavior:contai
 
 /* v3.5 Guided discovery: no new external assets or geographic assertions */
 .journey-section{margin:30px clamp(14px,3vw,40px);padding:clamp(22px,3vw,36px);border:1px solid #cddbd4;border-radius:23px;background:linear-gradient(155deg,#f7f5ed,#e9f1ec);box-shadow:0 12px 30px #183a3210}.journey-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;flex-wrap:wrap}.journey-heading h2{font-family:Georgia,"Noto Serif SC",serif;font-size:clamp(24px,3vw,33px);color:#163e45;margin:8px 0}.journey-heading p{max-width:430px;font-size:13px;line-height:1.85;color:#526b6d;margin:0}.journey-kicker{letter-spacing:.14em;font-size:11px;font-weight:800;color:#477a72}.journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:22px}.journey-card{border:1px solid #d2ddd6;border-radius:16px;padding:22px;background:#fffefa;text-align:left;display:flex;flex-direction:column;gap:10px;min-height:244px;color:#203f44;transition:transform .15s,border-color .15s}.journey-card:hover{transform:translateY(-3px);border-color:#45857a}.journey-card .journey-number{font-size:11px;letter-spacing:.1em;color:#64847b;font-weight:800}.journey-card strong{font-size:21px;line-height:1.45;font-family:Georgia,"Noto Serif SC",serif}.journey-card span{font-size:13px;line-height:1.7}.journey-card em{font-size:12px;color:#42736e;font-style:normal;margin-top:auto}.journey-intro{font-size:15px;line-height:1.9;color:#445d60}.journey-steps{display:grid;gap:10px;margin:20px 0}.journey-step{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1px solid #d5e0db;background:#f7faf7;border-radius:12px;padding:14px 16px;color:#24474a}.journey-step:hover,.journey-step:focus-visible{border-color:#2d8173}.journey-step[aria-current=step]{border:2px solid #257d70;background:#eaf5ef}.journey-step small{display:block;color:#647d7b;line-height:1.6}.journey-step strong{display:block;margin:3px 0;font-size:15px}.journey-prompt{background:#f0e9d8;border-left:4px solid #b69055;border-radius:8px;padding:15px 19px;margin:18px 0;line-height:1.85}.journey-actions{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}.journey-actions button{min-height:44px}.journey-reading{border:1px solid #d7e3dc;border-radius:14px;padding:14px;background:#fffdf7}.journey-reading .deep-feature{margin:0}.journey-reading h3{margin:0 0 10px}.journey-reading .journey-note{font-size:12px;line-height:1.7;color:#62747b}.journey-conclusion{border-top:1px solid #d5dfd8;margin-top:20px;padding-top:14px}.journey-conclusion li{line-height:1.85;margin:8px 0}.journey-conclusion p{line-height:1.85}.journey-complete{color:#276d60;font-weight:700}.journey-step-count{font-size:12px;font-weight:700;color:#31685f}.journey-back{margin-bottom:12px}.journey-section button:focus-visible,.journey-reading button:focus-visible{outline:3px solid #368d84;outline-offset:3px}@media(max-width:860px){.journey-grid{grid-template-columns:1fr}.journey-card{min-height:0}.journey-section{margin:20px 12px;padding:18px}}@media(prefers-reduced-motion:reduce){.journey-card{transition:none}.journey-card:hover{transform:none}}
+
+/* v3.6: evidence comparison is part of the same journey, not a new isolated view */
+.journey-comparison{padding:18px 0}.journey-comparison>h3{font-family:Georgia,"Noto Serif SC",serif;font-size:25px;color:#174d56}.journey-comparison>p{line-height:1.9;max-width:760px}.journey-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.journey-evidence-card{border:1px solid #d9e3dc;background:#f8faf6;border-radius:12px;padding:18px;min-width:0}.journey-evidence-card h4{color:#21525a;font-size:17px;line-height:1.5}.journey-evidence-card p{font-size:13px;line-height:1.85}.journey-evidence-card .btn{margin-top:12px;white-space:normal;text-align:left}.journey-warning{border-left:4px solid #b48b51;background:#f8f0df;padding:15px}.journey-note-panel{margin:22px 0;padding:20px;background:#f0f5f3;border-radius:12px}.journey-note-panel label{display:block;margin-bottom:10px}.journey-note-panel textarea{width:100%;min-height:95px}.journey-resume{margin:12px 0 18px;background:#f0e8d5}.journey-comparison li{line-height:1.9;margin-bottom:8px}
+@media(max-width:800px){.journey-evidence-grid{grid-template-columns:1fr}.journey-evidence-card{padding:15px}.journey-comparison>h3{font-size:22px}}
 </style>
 </head>
 <body>
@@ -438,23 +442,41 @@ function renderJourneys(){
 function journeyOverview(r){
  return '<p class="journey-intro">'+esc(r.question)+'</p><p class="help"><strong>阅读方法：</strong>先看每一站的经过、证据边界和来源，再回答比较问题。不同地区或年代的相似现象并不自动证明直接交流或因果。所有专题正文与来源说明均内嵌，可离线阅读；外部来源链接需要联网。</p>';
 }
-function journeyBody(r,index){
- const stepIndex=Math.max(0,Math.min(r.ids.length-1,index)),ev=D.events.find(e=>e.id===r.ids[stepIndex]);
- const steps=r.ids.map((id,j)=>{const e=D.events.find(x=>x.id===id);return '<button class="journey-step" type="button" data-journey-step="'+j+'" '+(j===stepIndex?'aria-current="step"':'')+'><span class="journey-step-count">'+(j+1)+' / '+r.ids.length+'</span><span><small>'+esc(regionName(e.r))+' · '+esc(e.dates)+'</small><strong>'+esc(e.title)+'</strong></span></button>'}).join('');
- const isLast=stepIndex===r.ids.length-1;
- const question=r.prompts[stepIndex]||r.question;
- const reading='<div class="journey-reading"><h3>第'+(stepIndex+1)+'站 · '+esc(ev.title)+'</h3><p class="journey-note">以下为已收录历史专题全文。来源支持范围与未定论之处请在正文末尾核查；阅读顺序不构成传播证据。</p>'+deepDiveHTML(ev)+'</div>';
- const conclusion=isLast?'<section class="journey-conclusion"><h3>完成路线 · 带着问题回看</h3><ol>'+r.prompts.map(p=>'<li>'+esc(p)+'</li>').join('')+'</ol><p>请区分可以从各篇材料直接得到的结论、跨地区比较，以及尚无证据证明的直接传播。你可以返回任意一站重新核查。</p><strong class="journey-complete">已走完全部 '+r.ids.length+' 站。继续选择另一条路线，或返回「世界同一刻」。</strong></section>':'';
- return journeyOverview(r)+'<div class="journey-steps" role="group" aria-label="路线章节">'+steps+'</div><div class="journey-prompt"><strong>这一站要追问：</strong>'+esc(question)+'</div>'+reading+'<div class="journey-actions"><button type="button" class="btn" id="journeyPrev" '+(stepIndex===0?'disabled':'')+'>← 上一站</button><button type="button" class="btn primary" id="journeyNext">'+(isLast?'回到路线起点':'下一站 →')+'</button><button type="button" class="btn" id="journeyMoment">在「世界同一刻」查看本阶段</button></div>'+conclusion;
+
+function journeyComparison(r){
+ const cards=r.ids.map((id,j)=>{
+  const e=D.events.find(x=>x.id===id),d=e.deepDive;
+  return '<article class="journey-evidence-card"><span class="journey-number">案例 '+(j+1)+' · '+esc(regionName(e.r))+'</span><h4>'+esc(e.title)+'</h4><p><strong>可观察的材料：</strong>'+esc(d.beats[1]?.text||d.setting)+'</p><p><strong>证据不能直接证明：</strong>'+esc(d.limits)+'</p><button type="button" class="btn" data-journey-step="'+j+'">回到本篇核查来源 →</button></article>';
+ }).join('');
+ return '<section class="journey-comparison" aria-label="跨文明证据对照"><h3>三个案例，三种证据</h3><p>比较的是研究方法与社会选择，不是宣称三地直接相遇。下列文字摘自各篇专题；请点击核对原始来源。</p><div class="journey-evidence-grid">'+cards+'</div><h4>把问题带走</h4><ol>'+r.prompts.map(p=>'<li>'+esc(p)+'</li>').join('')+'</ol><p class="journey-warning"><strong>证据判断：</strong>每篇内部的物证与记录属于该地区的历史材料；跨案例并列是教学比较，不是传播的直接证据。现有引用为主题级参考，尚未完成逐句核验。</p></section>';
 }
-function openJourney(id,index=0){
+function journeyBody(r,index){
+ const stepIndex=Math.max(0,Math.min(r.ids.length,index)),isSummary=stepIndex===r.ids.length;
+ const ev=isSummary?null:D.events.find(e=>e.id===r.ids[stepIndex]);
+ const steps=r.ids.map((id,j)=>{const e=D.events.find(x=>x.id===id);return '<button class="journey-step" type="button" data-journey-step="'+j+'" '+(j===stepIndex?'aria-current="step"':'')+'><span class="journey-step-count">'+(j+1)+' / '+r.ids.length+'</span><span><small>'+esc(regionName(e.r))+' · '+esc(e.dates)+'</small><strong>'+esc(e.title)+'</strong></span></button>'}).join('');
+ const summaryButton='<button class="journey-step" type="button" data-journey-step="'+r.ids.length+'" '+(isSummary?'aria-current="step"':'')+'><span class="journey-step-count">对照</span><span><small>跨地区比较</small><strong>证据与结论</strong></span></button>';
+ const reading=isSummary?journeyComparison(r):'<div class="journey-prompt"><strong>这一站要追问：</strong>'+esc(r.prompts[stepIndex]||r.question)+'</div><div class="journey-reading"><h3>第'+(stepIndex+1)+'站 · '+esc(ev.title)+'</h3><p class="journey-note">以下为已收录历史专题全文。来源支持范围与未定论之处请在正文末尾核查；阅读顺序不构成传播证据。</p>'+deepDiveHTML(ev)+'</div>';
+ const note=!isSummary?'<section class="journey-note-panel"><label for="journeyNote"><strong>我的阅读笔记 · '+esc(ev.title)+'</strong></label><p class="help">与事件详情使用同一份本机笔记；切换站点前请保存。</p><textarea id="journeyNote" class="note-input" placeholder="记录一条事实、一项证据或一个疑问…">'+esc(notes[ev.id]||'')+'</textarea><button type="button" class="btn" id="journeySaveNote">保存本篇笔记</button></section>':'';
+ return journeyOverview(r)+'<div class="journey-steps" role="group" aria-label="路线章节">'+steps+summaryButton+'</div>'+reading+note+'<div class="journey-actions"><button type="button" class="btn" id="journeyPrev" '+(stepIndex===0?'disabled':'')+'>← 上一站</button><button type="button" class="btn primary" id="journeyNext">'+(isSummary?'从头再读':stepIndex===r.ids.length-1?'完成阅读 · 对照证据 →':'下一站 →')+'</button>'+(isSummary?'':'<button type="button" class="btn" id="journeyMoment">在「世界同一刻」查看本阶段</button>')+'</div>';
+}
+function openJourney(id,index=0,focusTarget=null){
  const r=JOURNEYS.find(x=>x.id===id);if(!r)return;
- const i=Math.max(0,Math.min(r.ids.length-1,index));activeJourney={id:r.id,index:i};
- modal('跨文明深读 · '+(i+1)+' / '+r.ids.length,r.title,journeyBody(r,i));
- const body=$('modalBody');body.querySelectorAll('[data-journey-step]').forEach(b=>b.onclick=()=>openJourney(r.id,Number(b.dataset.journeyStep)));
- const prev=$('journeyPrev');if(prev)prev.onclick=()=>openJourney(r.id,i-1);
- $('journeyNext').onclick=()=>openJourney(r.id,i===r.ids.length-1?0:i+1);
- $('journeyMoment').onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;close();$('momentPeriod').value=String(e.p);focusedMomentRegion=null;renderMoment();$('moment')?.scrollIntoView({block:'start',behavior:'auto'});};
+ const i=Math.max(0,Math.min(r.ids.length,index));activeJourney={id:r.id,index:i};
+ modal('跨文明深读 · '+(i===r.ids.length?'证据对照':(i+1)+' / '+r.ids.length),r.title,journeyBody(r,i));
+ const body=$('modalBody');
+ body.querySelectorAll('[data-journey-step]').forEach(b=>b.onclick=()=>openJourney(r.id,Number(b.dataset.journeyStep),'[aria-current="step"]'));
+ const prev=$('journeyPrev');if(prev)prev.onclick=()=>openJourney(r.id,i-1,'#journeyPrev');
+ $('journeyNext').onclick=()=>openJourney(r.id,i===r.ids.length?0:i+1,'#journeyNext');
+ const noteSave=$('journeySaveNote');if(noteSave)noteSave.onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;notes[e.id]=$('journeyNote').value;save();notice('本篇笔记已保存')};
+ const moment=$('journeyMoment');if(moment)moment.onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;close();$('momentPeriod').value=String(e.p);focusedMomentRegion=null;renderMoment();showJourneyResume();$('moment')?.scrollIntoView({block:'start',behavior:'auto'});};
+ if(focusTarget){const target=body.querySelector(focusTarget);if(target)target.focus();}
+}
+function showJourneyResume(){
+ const moment=$('moment');if(!moment||!activeJourney)return;
+ let button=$('journeyResume');if(!button){button=document.createElement('button');button.id='journeyResume';button.type='button';button.className='btn journey-resume';moment.prepend(button)}
+ const r=JOURNEYS.find(x=>x.id===activeJourney.id);
+ button.textContent='← 返回阅读路线「'+r.title+'」· 第'+(activeJourney.index+1)+'站';
+ button.onclick=()=>openJourney(activeJourney.id,activeJourney.index);
 }
 function init(){ renderJourneys(); initMoment(); renderEraGallery(); $('stats').innerHTML=`<span>${D.periods.length} 个历史阶段</span><span>${D.regions.length} 个地区</span><span id="statEvents">${allEvents().length} 条历史事件</span><span>${D.interactions.length} 组跨文明互动</span>`;
 D.periods.forEach(p=>$('periodSelect').add(new Option(p.dates+' · '+p.title,p.id))); D.regions.forEach(r=>$('regionSelect').add(new Option(r.name,r.id)));
