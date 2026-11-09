@@ -4,8 +4,8 @@
 
 ## 可重复质量验证
 - `node tests/validate.mjs`：不依赖第三方包的静态JS与数据一致性验证。
-- `npm install --no-save --package-lock=false @playwright/test@1.56.1 && npx playwright install chromium && npx playwright test tests/explore.spec.mjs`：本地双视口Chromium回归；运行需要Node和浏览器下载权限。
-- `.github/workflows/atlas-quality.yml`：在GitHub Actions自动运行并保留失败截图。配置存在不代表测试已通过；应查看实际运行结果。
+- `npm install --no-save --package-lock=false @playwright/test@1.56.1 && npx playwright install chromium && npx playwright test tests/explore.spec.mjs`：本地双视口Chromium回归；运行需要Node和浏览器下载权限；CI 固定 ubuntu-24.04，避免 ubuntu-latest 升级到不受 Playwright 1.56.1 支持的 Ubuntu 26.04。
+- `.github/workflows/atlas-quality.yml`：在GitHub Actions自动运行并保留失败截图。2026-11-10 已在 GitHub Actions run 42697006602 验证静态检查成功、Chromium 桌面/手机共 12 项通过；后续提交仍须查看各自运行结果。
 
 ## 项目文件
 - `index.html` — 可交互网站入口（当前完整 HTML）
