@@ -1826,7 +1826,15 @@
       "tags": [
         "文化",
         "交流"
-      ]
+      ],
+      "background": "澳大利亚原住民社会具有不同语言、法律、土地管理与贸易网络；太平洋岛民依靠航海知识连接岛屿。十七世纪欧洲航海记录增加，但不是当地历史的起点。",
+      "impact": "欧洲海图与后续殖民政策改变外部权力关系；本土知识、跨代传承与地方联系持续存在。",
+      "debate": "不能把澳洲大陆各社群视为单一文化，也不能将欧洲人的‘发现’等同于无人居住。",
+      "sources": [
+        "Lynette Russell, Roving Mariners: Australian Aboriginal Whalers and Sealers in the Southern Oceans, 1800–1870, SUNY Press, 2012（研究19世纪原住民海洋活动，非1600年直接证据）",
+        "Patrick Vinton Kirch, On the Road of the Winds: An Archaeological History of the Pacific Islands before European Contact, University of California Press, 2000（太平洋定居与航海考古背景）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e82",
@@ -1839,7 +1847,15 @@
       "tags": [
         "政治",
         "贸易"
-      ]
+      ],
+      "background": "十八世纪清帝国经济与人口扩张，广州贸易体系是中外贸易的一个重要接口。十九世纪英国鸦片走私、清朝禁烟与外交冲突最终引发1840年战争。",
+      "impact": "战后条约与通商口岸重塑对外关系，但清朝社会经济转型并非单一战争造成。",
+      "debate": "‘闭关锁国’不足以概括清代复杂的边疆、海贸与朝贡关系；不同群体受冲击程度不同。",
+      "sources": [
+        "John K. Fairbank, Trade and Diplomacy on the China Coast: The Opening of the Treaty Ports, 1842–1854, Harvard University Press, 1953（条约口岸与外交制度研究）",
+        "William T. Rowe, China's Last Empire: The Great Qing, Harvard University Press, 2009（清帝国政治、经济及对外关系综合研究）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e83",
@@ -1852,7 +1868,15 @@
       "tags": [
         "殖民",
         "政治"
-      ]
+      ],
+      "background": "1757年普拉西战役后，英国东印度公司在孟加拉扩大财政和军事影响；1765年取得孟加拉、比哈尔与奥里萨的税收征管权。印度各政权持续竞争、合作和抵抗。",
+      "impact": "公司由贸易组织转为领土统治者之一，改变财政、军队、农业与商品流通；1857年后才由英国王室接管公司统治。",
+      "debate": "不能把1757年当作英国立即统治整个印度的日期；地区差异和印度政治主体性必须保留。",
+      "sources": [
+        "P. J. Marshall, Bengal: The British Bridgehead, Eastern India 1740–1828, Cambridge University Press, 1987（孟加拉公司扩张与财政）",
+        "C. A. Bayly, Indian Society and the Making of the British Empire, Cambridge University Press, 1988（印度社会与殖民权力形成）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e84",
@@ -1865,7 +1889,15 @@
       "tags": [
         "殖民",
         "政治"
-      ]
+      ],
+      "background": "十八世纪后期至十九世纪，暹罗却克里王朝、阮朝越南及缅甸王朝在区域战争、贸易与欧洲殖民压力下重组。殖民扩张在不同地区的时间和方式差异显著。",
+      "impact": "王朝改革、税收与军事制度调整影响区域秩序；殖民统治及边界重划逐渐改变社会经济。",
+      "debate": "不能将整个东南亚描述为同一时间被殖民：暹罗保持形式独立，越南与岛屿地区经历不同进程。",
+      "sources": [
+        "Anthony Reid, Southeast Asia in the Age of Commerce, 1450–1680, Yale University Press, 1988–1993（较早时期商业网络背景，非本期直接证据）",
+        "Nicholas Tarling (ed.), The Cambridge History of Southeast Asia, Volume 2, Cambridge University Press, 1992（十八至十九世纪各地区政治转型）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e85",
@@ -1878,7 +1910,15 @@
       "tags": [
         "政治",
         "技术"
-      ]
+      ],
+      "background": "奥斯曼帝国在军事财政压力下探索改革，1839年坦志麦特改革诏令开启新的制度阶段；埃及穆罕默德·阿里自十九世纪初改革军队、财政与产业。",
+      "impact": "行政与军事改革强化部分国家能力，也带来征税、劳役与地方权力冲突；欧洲资本与外交影响扩大。",
+      "debate": "‘现代化’不是线性成功叙事，埃及改革与奥斯曼中央改革有不同社会成本。",
+      "sources": [
+        "Donald Quataert, The Ottoman Empire, 1700–1922, Cambridge University Press, 2005（奥斯曼制度与经济改革）",
+        "Khaled Fahmy, All the Pasha's Men: Mehmed Ali, His Army and the Making of Modern Egypt, Cambridge University Press, 1997（埃及军队改革及社会影响）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e86",
@@ -1892,7 +1932,15 @@
         "工业",
         "思想",
         "政治"
-      ]
+      ],
+      "background": "十八世纪英国纺织、蒸汽动力和煤炭工业逐步机械化；启蒙时期关于权利与主权的争论，与1789年法国革命及其后战争交织。",
+      "impact": "工业化改变劳动、城市、能源使用与世界贸易；革命引发公民身份、法律与政治参与的新争论。",
+      "debate": "工业革命不是1750年瞬间发生；技术、殖民贸易、家庭劳动与能源条件的权重仍有史学讨论。",
+      "sources": [
+        "Robert C. Allen, The British Industrial Revolution in Global Perspective, Cambridge University Press, 2009（工资、能源与工业化解释）",
+        "William Doyle, The Oxford History of the French Revolution, Oxford University Press, 1989（法国革命政治进程）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e87",
@@ -1905,7 +1953,15 @@
       "tags": [
         "殖民",
         "思想"
-      ]
+      ],
+      "background": "十八世纪大西洋奴隶贸易仍在进行，非洲社会经历战争、商业重组与抵抗。英国1807年禁止奴隶贸易、1833年立法废除帝国多数地区奴隶制，但强制劳动并未随之消失。",
+      "impact": "废奴运动推动法律改变，获释者与被奴役者的抗争是核心力量；非法贸易与其他剥削劳动制度延续。",
+      "debate": "须区分禁止奴隶贸易、废除奴隶制及实际自由的不同日期；不可把非洲社会描写为被动背景。",
+      "sources": [
+        "David Eltis, The Rise of African Slavery in the Americas, Cambridge University Press, 2000（大西洋奴隶贸易结构与变化）",
+        "Seymour Drescher, Abolition: A History of Slavery and Antislavery, Cambridge University Press, 2009（跨地区废奴运动与制度转型）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e88",
@@ -1918,7 +1974,15 @@
       "tags": [
         "革命",
         "政治"
-      ]
+      ],
+      "background": "1776年北美殖民地宣布独立；1791年圣多明各奴隶起义推动海地革命，1804年海地独立；十九世纪初西属美洲多地爆发独立战争。",
+      "impact": "共和政治与公民权利观念传播，但种族等级、奴隶制、土地不平等和原住民主权冲突持续。",
+      "debate": "不能把美国、海地和拉美革命合并为同一进程；海地革命中的被奴役者解放具有独特意义。",
+      "sources": [
+        "Laurent Dubois, Avengers of the New World: The Story of the Haitian Revolution, Harvard University Press, 2004（海地革命与奴隶解放）",
+        "John Lynch, The Spanish American Revolutions, 1808–1826, W. W. Norton, 1986（西属美洲独立进程）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e89",
@@ -1931,7 +1995,15 @@
       "tags": [
         "殖民",
         "政治"
-      ]
+      ],
+      "background": "1788年英国第一舰队抵达悉尼湾并建立流放殖民地，土地并非无主：澳大利亚原住民长期拥有自己的社会、法律与领地。",
+      "impact": "殖民定居带来土地剥夺、疾病、暴力与抵抗，深刻改变环境与人口分布；原住民社会持续生存并争取权利。",
+      "debate": "各地区接触、暴力和人口变化时间不同；不应把殖民扩张写成单一、均匀的事件。",
+      "sources": [
+        "Grace Karskens, The Colony: A History of Early Sydney, Allen & Unwin, 2009（早期悉尼殖民地与原住民接触）",
+        "Henry Reynolds, The Other Side of the Frontier: Aboriginal Resistance to the European Invasion of Australia, Penguin, 1982（原住民抵抗与殖民暴力）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e90",
@@ -1944,7 +2016,15 @@
       "tags": [
         "改革",
         "战争"
-      ]
+      ],
+      "background": "1850年起太平天国战争重创清朝，十九世纪六十年代以后洋务派推进军事工业与外交改革；1894—1895年甲午战争后改革呼声加剧，1911年革命结束帝制。",
+      "impact": "战争、财政重组、工业与教育制度变化改变国家能力与社会政治；共和体制建立后仍面临地方权力和国家整合问题。",
+      "debate": "不能将洋务运动简单概括为失败或把1911年视为现代国家建设的完成；地区与社会群体经验不同。",
+      "sources": [
+        "Mary C. Wright, The Last Stand of Chinese Conservatism: The T'ung-Chih Restoration, 1862–1874, Stanford University Press, 1957（同治时期改革）",
+        "Joseph W. Esherick, Reform and Revolution in China: The 1911 Revolution in Hunan and Hubei, University of California Press, 1976（辛亥革命地方政治研究）"
+      ],
+      "sourceStatus": "具名学术出版物及其适用范围；未经逐页核对，不将书目视为已核验的逐项引文。"
     },
     {
       "id": "e91",
