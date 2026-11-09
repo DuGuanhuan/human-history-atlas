@@ -11,6 +11,7 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    const select=page.locator('#momentPeriod');
    await select.selectOption({index:2});
    await expect(page.locator('#momentContext')).not.toBeEmpty();
+   await expect(page.locator('#momentGrid .moment-depth').first()).toBeVisible();
    await page.locator('#momentGrid .moment-event').first().click();
    await expect(page.locator('#overlay')).toHaveClass(/open/);
    await expect(page.locator('#modalTitle')).not.toBeEmpty();
