@@ -295,7 +295,7 @@ body.dialog-open{overflow:hidden}.overlay.open .panel{overscroll-behavior:contai
 /* v3.9: readable, expandable evidence-first region cards */
 .moment-intro{display:block;margin-top:6px;color:#51636a;font-size:12px;line-height:1.65;font-weight:400}.moment-expand{margin-top:9px;min-height:40px;width:100%;text-align:center}.moment-region .moment-event{margin-top:8px}.moment-region .moment-event:focus-visible{outline:3px solid #347e86;outline-offset:2px}
 @media(max-width:600px){.moment-intro{font-size:13px;line-height:1.75}.moment-expand{min-height:44px}}
-</style>
+\n.moment-chronology{border-top:1px solid #dce5e1;margin-top:12px;padding-top:12px}.moment-chronology h4{margin:0 0 6px;font-size:15px}.moment-chronology>p{font-size:12px;line-height:1.6;color:#52666b}.moment-era-group{border-left:2px solid #b4d0cd;margin:12px 0;padding-left:12px}.moment-era-group>strong{font-size:12px;line-height:1.5;color:#215d65}\n</style>
 </head>
 <body>
 <header><div class="eyebrow">HUMAN HISTORY ATLAS  /  A LIVING WORLD HISTORY</div><h1>人类文明的时间与空间</h1><p>从农业起源到当代世界，纵览八个地区、十五个历史阶段。沿着时间穿行，在同一行对照不同文明，在历史节点间发现交流、冲突与共同演进。</p><div class="head-stats" id="stats"></div></header>
@@ -433,22 +433,34 @@ function renderMoment(){
   const events=allEvents().filter(e=>e.p===p.id&&e.r===r.id);
   const count=document.createElement('small');count.textContent=events.length+' 条已收录事件';card.append(count);
   if(!events.length){const empty=document.createElement('p');empty.className='moment-empty';empty.textContent='此阶段暂无收录；不代表没有历史。';card.append(empty)}
+  // Expand across all eras without abandoning the selected world moment.
+  events.slice(0,2).forEach(e=>card.append(momentEventButton(e)));
   const expanded=expandedMomentRegions.has(r.id);
-  const visible=expanded?events:events.slice(0,2);
-  visible.forEach(e=>card.append(momentEventButton(e)));
-  if(events.length>2){
-   const more=document.createElement('button');more.className='moment-link moment-expand';more.type='button';
-   more.setAttribute('aria-expanded',String(expanded));
-   more.setAttribute('aria-label',(expanded?'收起':'展开')+r.name+'的历史事件');
-   more.textContent=expanded?'收起至前 2 条 ↑':'展开本地区全部 '+events.length+' 条 ↓';
-   more.onclick=()=>{
-    if(expanded)expandedMomentRegions.delete(r.id);else expandedMomentRegions.add(r.id);
-    renderMoment();
-    const regionCard=[...$('momentGrid').children][j];
-    regionCard?.querySelector('.moment-expand')?.focus({preventScroll:true});
-   };
-   card.append(more);
+  if(expanded){
+   const chronology=document.createElement('div');chronology.className='moment-chronology';
+   const heading=document.createElement('h4');heading.textContent=r.name+' · 跨时代纵览';chronology.append(heading);
+   const intro=document.createElement('p');intro.textContent='按时代浏览本地区已收录事件。点击事件阅读正文；时代范围不等于精确年份。';chronology.append(intro);
+   D.periods.forEach(era=>{
+    const matches=allEvents().filter(e=>e.r===r.id&&e.p===era.id&&era.id!==p.id);
+    if(!matches.length)return;
+    const group=document.createElement('section');group.className='moment-era-group';
+    const label=document.createElement('strong');label.textContent=era.dates+' · '+era.title;group.append(label);
+    matches.forEach(e=>group.append(momentEventButton(e)));
+    chronology.append(group);
+   });
+   card.append(chronology);
   }
+  const more=document.createElement('button');more.className='moment-link moment-expand';more.type='button';
+  more.setAttribute('aria-expanded',String(expanded));
+  more.setAttribute('aria-label',(expanded?'收起':'展开')+r.name+'的跨时代历史');
+  more.textContent=expanded?'收起跨时代纵览 ↑':'纵览'+r.name+'的全部历史阶段 ↓';
+  more.onclick=()=>{
+   if(expanded)expandedMomentRegions.delete(r.id);else expandedMomentRegions.add(r.id);
+   renderMoment();
+   const regionCard=[...$('momentGrid').children][j];
+   regionCard?.querySelector('.moment-expand')?.focus({preventScroll:true});
+  };
+  card.append(more);
   grid.append(card);
  });
  const links=$('momentLinks');links.replaceChildren();const items=relations.filter(i=>!focusedMomentRegion||i.frm===focusedMomentRegion||i.to===focusedMomentRegion);
