@@ -26,10 +26,114 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
 .source-entry{padding:9px 4px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.source-guide{margin:9px 0;padding:9px 12px;background:#eef5f2;border:1px solid #d2e2db;border-radius:9px}.source-guide summary{cursor:pointer;font-weight:650;min-height:44px;display:flex;align-items:center;color:#175d65}.source-guide p{line-height:1.7;margin:7px 0}@media(max-width:620px){.source-entry{padding:12px 0}}
 /* v2.1: related reading with comfortable touch targets */
 .research [data-chain-id]{border-left:4px solid var(--accent);min-height:48px;overflow-wrap:anywhere}@media(max-width:620px){.research [data-chain-id]{width:100%}}
+
+/* === v2.3 • Museum-grade editorial redesign === */
+:root{--bg:#f6f4ef;--paper:#fffefa;--ink:#202b30;--muted:#64747a;--line:#e9e6de;--accent:#ba7344;--shadow:0 24px 80px rgba(28,43,45,.08);--timew:172px;--colw:252px}
+html{scroll-padding-top:100px}
+body{background:radial-gradient(ellipse at 7% 0%,#ece8df 0,transparent 34%),#f7f5f0;color:#263338;-webkit-font-smoothing:antialiased}
+header{padding:67px clamp(24px,6vw,112px) 59px;background:radial-gradient(ellipse at 79% 25%,#294d50 0%,transparent 34%),linear-gradient(118deg,#122c32,#1a3439 56%,#273f42);border-bottom:4px solid #b48b61;min-height:292px}
+header:before{content:'';position:absolute;inset:0;opacity:.22;background:repeating-radial-gradient(circle at 83% 34%,transparent 0 34px,#e9d2a920 35px 36px,transparent 37px 69px);pointer-events:none}
+header:after{content:'◉';right:7%;top:3px;font:260px Georgia,serif;opacity:.055}
+header .eyebrow{font-size:11px;letter-spacing:.32em;color:#d6b48b;font-weight:750;position:relative}
+header h1{font-family:Georgia,"Noto Serif SC","Songti SC","STSong",serif;font-weight:650;letter-spacing:.045em;line-height:1.3;font-size:clamp(32px,4.4vw,60px);margin:15px 0 17px;position:relative}
+header p{max-width:720px;font-size:15px;line-height:2.0;color:#cad9d6;position:relative}
+.head-stats{gap:0;margin-top:30px;position:relative}
+.head-stats span{border:none;background:transparent;border-radius:0;padding:0 18px 0 0;margin-right:18px;border-right:1px solid #ffffff32;color:#e9e2d4;font-size:12px;letter-spacing:.04em}
+.head-stats span:last-child{border:0}
+.toolbar{top:0;padding:13px clamp(16px,3.2vw,52px);gap:9px;background:#fffefbf5;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 7px 27px #152d3410;border-bottom:1px solid #e8e3d9}
+.search{border:1px solid #e0ddd5;background:#f8f7f3;padding:12px 16px;border-radius:12px;color:#263338;font-size:13px;min-width:235px;max-width:395px}
+.search:focus{background:white}
+.tool-select,.btn{border:1px solid #e4e0d8;background:#fff;border-radius:10px;min-height:42px;padding:10px 13px;font-size:12px;font-weight:600;color:#536267;transition:background .15s,color .15s,border-color .15s}
+.btn:hover,.tool-select:hover{background:#f4f3ef;border-color:#c0ac95;color:#253b3d}
+.btn.primary{background:#23454a;border-color:#23454a;color:#fff}
+.btn.primary:hover{background:#142f35}
+.btn.active{background:#f4ece0;border-color:#d6b590;color:#805a32}
+.hintline{margin:0 auto;max-width:1600px;padding:24px clamp(18px,3vw,48px) 18px;font-size:12px;color:#83908b;gap:12px}
+.hintline strong{color:#a26743;font-size:17px}
+.main-layout{padding:0 clamp(12px,3vw,50px) 55px;max-width:1840px;margin:0 auto}
+.timeline-viewport{border:1px solid #e4dfd4;border-radius:18px;max-height:calc(100vh - 140px);box-shadow:0 22px 70px #29373a13;scrollbar-color:#aab8b1 #efeee9;background:#fffdf8}
+.timeline-grid{grid-template-columns:var(--timew) repeat(8,var(--colw))}
+.corner{background:#233c3d;min-height:96px;padding:21px;border-right:1px solid #ffffff1a;box-shadow:4px 0 12px #00000010}
+.corner strong{font-size:12px;letter-spacing:.05em;font-weight:650}
+.corner small{font-size:11px;opacity:.65}
+.region-head{min-height:96px;padding:18px;background:#fafaf6;border-right:1px solid #e9e5de;border-bottom:3px solid var(--region-color);box-shadow:0 5px 14px #182b3010}
+.region-head:before{content:'';position:absolute;inset:0;opacity:.20;pointer-events:none;background:linear-gradient(to bottom,var(--region-color),transparent 60%);mask-image:linear-gradient(to right,#0003,transparent 65%)}
+.region-head strong{position:relative;font:650 17px/1.5 Georgia,"Noto Serif SC","Songti SC",serif;color:#25383a}
+.region-head small{position:relative;font-size:10px;line-height:1.5;color:#89928d}
+.time-cell{padding:22px 17px 25px 22px;gap:7px;background:#f2f0ea;border-right:1px solid #e0d9ce;border-top:1px solid #e7e2d9;box-shadow:4px 0 8px #10272908}
+.time-cell .date{color:#b37b4a;font-size:12px;letter-spacing:.025em;font-weight:800;line-height:1.6}
+.time-cell strong{color:#2e3f3e;font:650 17px/1.55 Georgia,"Noto Serif SC","Songti SC",serif}
+.time-cell .summary{font-size:11px;color:#7b8884;line-height:1.85;margin-top:8px}
+.region-cell{min-height:187px;background:#fffdfa;border-right:1px solid #eeeae2;border-top:1px solid #ede9e0;padding:15px 12px;gap:10px}
+.region-cell:nth-child(even){background:#fdfbf6}
+.event-card{border:1px solid #eeeae1;background:#fff;border-radius:11px;padding:15px 14px 13px;box-shadow:0 3px 13px #28393607;border-left:3px solid var(--region-color);transition:transform .16s,box-shadow .16s,border-color .16s;text-wrap:pretty}
+.event-card:hover{border-color:#b9b5aa;transform:translateY(-3px);box-shadow:0 14px 28px #182e3618}
+.event-title{font-size:13px;font-weight:680;line-height:1.65;color:#22383b;letter-spacing:.013em}
+.event-date{font-size:11px;line-height:1.5;color:#9b7861;margin-top:7px}
+.event-people{font-size:11px;color:#8a9891;margin-top:6px;line-height:1.7}
+.event-people:before{content:'人物 · ';color:#a2836d}
+.muted-empty{color:#d1cbc1;font-size:13px}
+.region-cell.dim{opacity:.24;filter:grayscale(.65)}
+.region-cell.match .event-card{border-color:#af8e67;box-shadow:0 0 0 1px #d9b886}
+.region-cell.compact{min-height:108px;padding:9px}
+.compact .event-card{padding:10px 9px;border-radius:8px}
+.compact .event-title{font-size:12px}
+.time-cell.compact{min-height:108px}
+.interaction-strip{background:linear-gradient(90deg,#f5f1e8,#faf6ef);border-color:#e6dac8;padding:12px 19px;gap:9px}
+.interaction-strip .strip-label{color:#956a43;font-size:11px;letter-spacing:.06em}
+.interaction-pill{background:#fffdf8;border:1px solid #e2d6c3;color:#74593f;border-radius:8px;font-size:11px;padding:8px 12px}
+.interaction-pill:hover{background:#efe4d3}
+.legend{margin-top:22px;border:1px solid #e7e1d5;background:#fffcf6;border-radius:14px;padding:24px 30px;line-height:2.1;color:#77847e;font-size:12px}
+.legend strong{color:#394a48}
+.footer{margin-top:25px;color:#9aa29b}
+.overlay{background:#0c262bcc;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.panel{width:min(780px,100%);border-radius:18px;box-shadow:0 40px 100px #0006;background:#fffdfa}
+.panel .top{padding:30px 34px 22px;border-bottom:1px solid #eee8dd;background:linear-gradient(120deg,#fcf9f1,#fffdfa)}
+.panel .top small{color:#a5744c;letter-spacing:.12em;font-weight:700}
+.panel .top h2{font:650 clamp(22px,3.4vw,32px)/1.5 Georgia,"Noto Serif SC","Songti SC",serif;color:#263d3e;margin-top:9px}
+.panel .body{padding:26px 34px 34px;line-height:1.95;font-size:14px;color:#3b4e4f}
+.close{background:#eee9df;color:#4c6260;border-radius:50%;width:40px;height:40px}
+.close:hover{background:#ddd7c9}
+.detail-text{font-size:15px;line-height:2.05;color:#384849}
+.tag{background:#f3eee4;color:#8c6646;border:1px solid #e9dbc6;padding:4px 9px;border-radius:6px;font-size:11px}
+.research{background:#fffefa;border:1px solid #e9e1d4;border-radius:12px;padding:22px 24px;margin:22px 0;box-shadow:0 4px 17px #31464105}
+.research h3{font:650 17px/1.55 Georgia,"Noto Serif SC","Songti SC",serif;color:#365250;margin-top:18px}
+.research details{border-top-color:#eee7de}
+.research summary{color:#6a604e}
+.source-guide{background:#faf7f0;border-color:#e8ddce}
+.source-guide summary{color:#6d604f}
+.related-event{background:#fcfaf4;border:1px solid #e7dfd1;color:#365556;border-left:3px solid #b7a489;border-radius:9px}
+.related-event:hover{background:#f1ebdf}
+.note-input,.form-input,.form-textarea,#compareSearch,.compare-filter select{background:#fff;border-color:#e2ddd2;border-radius:9px}
+.toast{background:#203f43}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ce9d63;outline-offset:3px}
+body.atlas-focus header,body.atlas-focus .hintline,body.atlas-focus .legend,body.atlas-focus .footer{display:none}
+body.atlas-focus .toolbar{box-shadow:0 4px 20px #12282c15}
+body.atlas-focus .main-layout{padding-top:14px}
+body.atlas-focus .timeline-viewport{max-height:calc(100vh - 94px)}
+#focusBtn[aria-pressed="true"]{background:#263f42;color:white;border-color:#263f42}
+@media(max-width:760px){
+:root{--timew:128px;--colw:205px}
+header{min-height:0;padding:39px 22px 34px}header h1{font-size:34px}header p{font-size:13px;line-height:1.8}
+.head-stats span{margin-bottom:8px;padding-right:10px;margin-right:10px}
+.toolbar{padding:12px;gap:7px;position:sticky}
+.search{min-width:0;max-width:none;flex-basis:100%;font-size:14px}
+.toolbar .btn,.toolbar .tool-select{min-height:43px;max-width:none;font-size:11px;padding:10px}
+.hintline{padding:17px 14px}.hintline span:last-child{display:none}
+.main-layout{padding:0 8px 25px}.timeline-viewport{border-radius:12px;max-height:calc(100dvh - 165px)}
+.corner,.region-head{min-height:80px;padding:12px}.region-head strong{font-size:14px}
+.time-cell{padding:14px 9px}.time-cell strong{font-size:13px}.time-cell .date{font-size:10px}.time-cell .summary{font-size:10px}
+.region-cell{min-height:140px;padding:9px}.event-card{padding:11px 10px}.event-title{font-size:12px}
+.panel .top{padding:22px 20px 15px}.panel .body{padding:18px 19px 27px}
+.research{padding:15px}.legend{padding:20px}
+body.atlas-focus .timeline-viewport{max-height:calc(100dvh - 120px)}
+}
+@media(prefers-reduced-motion:reduce){.btn,.event-card{transition:none}}
+
 </style>
 </head>
 <body>
-<header><div class="eyebrow">HISTORY ATLAS · INTERACTIVE</div><h1>世界历史 · 文明交汇时间线</h1><p>纵轴向下是时间，横轴是不同地区。把同一时期的文明、人物、国家和跨洲交流放在一起观察：历史不是八条平行线，而是一张不断连接的网络。</p><div class="head-stats" id="stats"></div></header>
+<header><div class="eyebrow">HUMAN HISTORY ATLAS  /  A LIVING WORLD HISTORY</div><h1>人类文明的时间与空间</h1><p>从农业起源到当代世界，纵览八个地区、十五个历史阶段。沿着时间穿行，在同一行对照不同文明，在历史节点间发现交流、冲突与共同演进。</p><div class="head-stats" id="stats"></div></header>
 <div class="toolbar">
 <input type="search" id="search" class="search" placeholder="⌕ 搜索：孔子 / 丝绸之路 / 工业革命…" aria-label="搜索历史"/>
 <select id="periodSelect" class="tool-select" aria-label="跳转历史阶段"><option value="">跳转历史阶段</option></select>
@@ -38,13 +142,14 @@ header{position:relative;padding:34px clamp(18px,4vw,58px) 24px;background:linea
 <button class="btn active" id="interactBtn" title="显示或隐藏跨地区互动">↔ 文明互动</button>
 <button class="btn" id="sourcedBtn" aria-pressed="false" title="仅显示已有扩展史料的事件">▣ 深度资料筛选</button>
 <button class="btn" id="compactBtn" title="切换紧凑/详细视图">▦ 紧凑模式</button>
+<button class="btn" id="focusBtn" type="button" aria-pressed="false" title="沉浸式浏览历史时间轴">◐ 沉浸阅读</button>
 <div class="tool-spacer"></div>
 <button class="btn primary" id="addBtn">＋ 新增事件</button>
 <button class="btn" id="exportBtn">↓ 导出数据</button>
 <button class="btn" id="importBtn">↑ 导入</button><input id="importFile" type="file" accept="application/json,.json" hidden/>
 </div>
 <div class="hintline"><span id="resultCount"><strong>时间线已载入</strong></span><span>提示：按 / 聚焦搜索 · 横向滚动浏览地区 · 纵向滚动穿越时代 · 点击事件展开详情</span></div>
-<main class="main-layout"><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v2.2 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
+<main class="main-layout"><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v2.3 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="历史事件详情"><div class="panel"><div class="top"><div><small id="modalKicker"></small><h2 id="modalTitle"></h2></div><button class="close" id="closeModal" aria-label="关闭">×</button></div><div class="body" id="modalBody"></div></div></div>
 <div class="toast" id="toast"></div>
 <script id="history-data" type="application/json">
@@ -69,6 +174,7 @@ $('search').addEventListener('input',e=>{state.search=e.target.value.trim().toLo
 $('periodSelect').addEventListener('change',e=>{let target=$('period-'+e.target.value);if(target){let v=$('viewport');v.scrollTo({top:target.offsetTop-75,behavior:'smooth'})}});
 $('interactBtn').onclick=()=>{state.interactions=!state.interactions;$('interactBtn').classList.toggle('active',state.interactions);render()};$('compactBtn').onclick=()=>{state.compact=!state.compact;$('compactBtn').classList.toggle('active',state.compact);$('compactBtn').textContent=state.compact?'▤ 详细模式':'▦ 紧凑模式';render()};
 $('sourcedBtn').onclick=()=>{state.sourced=!state.sourced;$('sourcedBtn').classList.toggle('active',state.sourced);$('sourcedBtn').setAttribute('aria-pressed',String(state.sourced));render()};
+$('focusBtn').onclick=()=>{const active=document.body.classList.toggle('atlas-focus');$('focusBtn').setAttribute('aria-pressed',String(active));$('focusBtn').textContent=active?'◐ 退出沉浸':'◐ 沉浸阅读';};
 $('addBtn').onclick=addDialog;$('exportBtn').onclick=exportData;$('importBtn').onclick=()=>$('importFile').click();$('importFile').addEventListener('change',importData);
 $('closeModal').onclick=close;$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close();if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)&&!$('overlay').classList.contains('open')){e.preventDefault();$('search').focus()}});render();}
 function matched(e){if(state.sourced&&!e.background)return false;if(state.tag!=='all'&&!e.tags.includes(state.tag))return false;if(!state.search)return true;let s=[e.title,e.dates,e.people,e.desc,e.background,e.impact,e.debate,...e.tags,D.regions.find(r=>r.id===e.r)?.name].join(' ').toLowerCase();return s.includes(state.search)}
