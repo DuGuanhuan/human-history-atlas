@@ -152,6 +152,50 @@ body.atlas-focus .timeline-viewport{max-height:calc(100dvh - 120px)}
 /* v2.5 original explanatory visual chapters */
 .era-gallery{max-width:1840px;margin:auto;padding:28px clamp(12px,3vw,50px) 16px}.gallery-heading{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:16px;flex-wrap:wrap}.gallery-heading h2{font:650 clamp(22px,2.5vw,32px)/1.4 Georgia,"Noto Serif SC","Songti SC",serif;color:#2a4342;margin:4px 0}.gallery-heading p{font-size:12px;color:#76847d;max-width:600px;line-height:1.7;margin:0}.gallery-kicker{font-size:10px;font-weight:800;letter-spacing:.22em;color:#a16b46}.era-gallery-track{display:grid;grid-auto-flow:column;grid-auto-columns:175px;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:3px 3px 15px;scrollbar-color:#c2b4a0 #f2eee7}.era-tile{scroll-snap-align:start;text-align:left;min-height:188px;padding:0 0 14px;background:#fffdf9;border:1px solid #e3ded3;border-radius:14px;overflow:hidden;box-shadow:0 5px 18px #1b393b0b;transition:transform .18s,box-shadow .18s}.era-tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px #1b393b18}.era-tile svg{display:block;width:100%;height:111px}.era-name{display:block;font:650 14px/1.45 Georgia,"Noto Serif SC","Songti SC",serif;padding:10px 12px 2px;color:#304543}.era-years{display:block;font-size:10px;color:#9b7656;padding:0 12px}.era-art{display:block;width:100%;height:76px;overflow:hidden;border-radius:8px;margin-bottom:12px}.era-art svg{width:100%;height:100%;display:block}.era-art-detail{margin:0 0 18px;border-radius:13px;overflow:hidden;background:#f3f0e8}.era-art-detail svg{display:block;width:100%;height:175px}.era-art-detail figcaption{padding:9px 14px;color:#756e61;font-size:11px;line-height:1.7}.time-cell .era-art{height:72px}.time-cell.compact .era-art{display:none}body.atlas-focus .era-gallery{display:none}@media(max-width:760px){.era-gallery{padding:20px 12px 12px}.era-gallery-track{grid-auto-columns:162px}.era-tile{min-height:175px}.era-tile svg{height:102px}.era-art-detail svg{height:142px}}@media(prefers-reduced-motion:reduce){.era-tile{transition:none}}
 
+
+/* v2.6 — responsive chapter reader: one-column, period-first, region-selectable */
+.reader-switch{background:#f1e9dd;border-color:#cfbda6;color:#654d37}
+.reader-switch[aria-pressed="true"]{background:#23454a;border-color:#23454a;color:#fff}
+.reader-view{display:none;max-width:1080px;margin:0 auto 35px}
+.reader-view.active{display:block}
+.reader-intro{padding:23px 26px;border-radius:17px;background:#213f42;color:#e9ede7;margin-bottom:18px;display:flex;gap:15px;align-items:center;justify-content:space-between}
+.reader-intro h2{font:650 clamp(20px,3vw,28px)/1.4 Georgia,"Noto Serif SC",serif;margin:0 0 7px}
+.reader-intro p{font-size:12px;color:#d3dfd8;line-height:1.8;margin:0}
+.reader-region-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.reader-region-tabs button{border:1px solid #dcd6c9;background:#fffdf8;color:#526365;border-radius:999px;padding:9px 15px;min-height:44px;font-size:12px}
+.reader-region-tabs button[aria-pressed="true"]{background:#28494b;color:#fff;border-color:#28494b}
+.reader-chapter{border:1px solid #e7e0d3;background:#fffdf9;border-radius:16px;margin:0 0 20px;overflow:hidden;scroll-margin-top:115px;box-shadow:0 7px 24px #1b303509}
+.reader-chapter-head{display:grid;grid-template-columns:125px 1fr;gap:19px;padding:22px;background:#f3f0e9;border-bottom:1px solid #e7e0d3}
+.reader-chapter-head svg{display:block;width:100%;border-radius:9px}
+.reader-chapter-head .reader-date{font-size:12px;color:#9b744f;font-weight:700}
+.reader-chapter-head h3{font:650 clamp(19px,2.8vw,25px)/1.45 Georgia,"Noto Serif SC",serif;color:#253e40;margin:6px 0}
+.reader-chapter-head p{font-size:13px;color:#6c7975;line-height:1.8;margin:0}
+.reader-chapter-body{padding:18px 22px 24px}
+.reader-group{margin:10px 0 22px}
+.reader-group h4{display:flex;align-items:center;gap:10px;font-size:13px;color:#5e6f70;letter-spacing:.04em;margin:0 0 12px}
+.reader-group h4:before{content:'';height:18px;width:4px;border-radius:4px;background:var(--region-color)}
+.reader-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.reader-event{border:1px solid #e7e1d8;border-radius:11px;background:#fff;text-align:left;padding:17px;min-height:108px;display:flex;flex-direction:column;gap:7px;color:#263f40;box-shadow:0 4px 15px #20363508;border-left:3px solid var(--region-color)}
+.reader-event:hover{border-color:#bda486;background:#fdfaf4}
+.reader-event strong{font-size:15px;line-height:1.5}
+.reader-event small{color:#9a7451;font-size:12px}
+.reader-event span{font-size:12px;line-height:1.7;color:#71817b}
+.reader-relations{padding:12px 0 0;border-top:1px solid #e9e2d8;display:flex;flex-wrap:wrap;gap:8px}
+.reader-relations button{border:1px solid #e0d2bc;background:#f9f3e9;border-radius:9px;color:#75583d;padding:10px;font-size:12px}
+.reader-empty{padding:16px;color:#8b918a;font-size:13px}
+.reader-view.active~.timeline-viewport{display:none}
+.main-layout.reader-active .timeline-viewport{display:none}
+@media(max-width:760px){
+.reader-view{margin-bottom:22px}
+.reader-intro{padding:19px;display:block}
+.reader-region-tabs{flex-wrap:nowrap;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin;position:sticky;top:0;z-index:17;background:#f7f5f0}
+.reader-region-tabs button{white-space:nowrap;flex-shrink:0}
+.reader-chapter-head{grid-template-columns:95px 1fr;gap:12px;padding:16px}
+.reader-chapter-body{padding:13px 15px}
+.reader-cards{grid-template-columns:1fr}
+.reader-event{min-height:96px}
+}
+
 </style>
 </head>
 <body>
@@ -161,6 +205,7 @@ body.atlas-focus .timeline-viewport{max-height:calc(100dvh - 120px)}
 <select id="periodSelect" class="tool-select" aria-label="跳转历史阶段"><option value="">跳转历史阶段</option></select>
 <select id="regionSelect" class="tool-select" aria-label="高亮地区"><option value="all">全部地区</option></select>
 <select id="tagSelect" class="tool-select" aria-label="筛选主题"><option value="all">全部主题</option></select>
+<button class="btn reader-switch" id="readerBtn" type="button" aria-pressed="false" aria-controls="readerView">▤ 章节阅读</button>
 <button class="btn" id="networkBtn" type="button" title="可视化探索跨文明联系">◎ 交流网络图</button>
 <button class="btn active" id="interactBtn" title="显示或隐藏跨地区互动">↔ 文明互动</button>
 <button class="btn" id="sourcedBtn" aria-pressed="false" title="仅显示已有扩展史料的事件">▣ 深度资料筛选</button>
@@ -172,7 +217,7 @@ body.atlas-focus .timeline-viewport{max-height:calc(100dvh - 120px)}
 <button class="btn" id="importBtn">↑ 导入</button><input id="importFile" type="file" accept="application/json,.json" hidden/>
 </div>
 <div class="hintline"><span id="resultCount"><strong>时间线已载入</strong></span><span>提示：按 / 聚焦搜索 · 横向滚动浏览地区 · 纵向滚动穿越时代 · 点击事件展开详情</span></div>
-<section class="era-gallery" aria-label="图解历史阶段"><div class="gallery-heading"><div><div class="gallery-kicker">VISUAL CHAPTERS / 图解时代</div><h2>十五个时代，一幅人类历史长卷</h2></div><p>原创象征性插画，帮助识别历史主题；并非出土文物、真实人物肖像或历史地图。点击任一时代，直接定位时间线。</p></div><div class="era-gallery-track" id="eraGallery"></div></section><main class="main-layout"><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v2.5 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
+<section class="era-gallery" aria-label="图解历史阶段"><div class="gallery-heading"><div><div class="gallery-kicker">VISUAL CHAPTERS / 图解时代</div><h2>十五个时代，一幅人类历史长卷</h2></div><p>原创象征性插画，帮助识别历史主题；并非出土文物、真实人物肖像或历史地图。点击任一时代，直接定位时间线。</p></div><div class="era-gallery-track" id="eraGallery"></div></section><main class="main-layout"><div class="reader-view" id="readerView" aria-label="纵向章节阅读"></div><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v2.6 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="历史事件详情"><div class="panel"><div class="top"><div><small id="modalKicker"></small><h2 id="modalTitle"></h2></div><button class="close" id="closeModal" aria-label="关闭">×</button></div><div class="body" id="modalBody"></div></div></div>
 <div class="toast" id="toast"></div>
 <script id="history-data" type="application/json">
@@ -184,7 +229,7 @@ const D=JSON.parse(document.getElementById('history-data').textContent);
 const COLORS=['#b75a49','#bc8145','#578b75','#947255','#597da8','#638b5b','#996c9d','#678ca0'];
 const TINTS=['#fcf2ef','#fdf6eb','#f0f7f1','#f9f4ed','#eff5fc','#f2f8ed','#fbf2fb','#eff6f8'];
 const STORAGE='world_history_atlas_v1';const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let state={search:'',region:'all',tag:'all',interactions:true,compact:false,sourced:false};let custom=[],notes={};
+let state={search:'',region:'all',tag:'all',interactions:true,compact:false,sourced:false,reader:false};let custom=[],notes={};
 try{let saved=JSON.parse(localStorage.getItem(STORAGE)||'{}');if(Array.isArray(saved.custom)) custom=saved.custom.filter(validEvent);if(saved.notes&&typeof saved.notes==='object')notes=saved.notes;}catch(e){}
 function save(){try{localStorage.setItem(STORAGE,JSON.stringify({custom,notes}));}catch(e){notice('本地保存失败，请使用导出备份');}}
 function validEvent(e){return e&&typeof e.title==='string'&&typeof e.p==='number'&&e.p>=0&&e.p<D.periods.length&&D.regions.some(r=>r.id===e.r)}
@@ -193,16 +238,54 @@ function notice(t){const el=$('toast');el.textContent=t;el.classList.add('show')
 
 const ERA_MOTIFS=["M65 120V48m0 22-20-20m20 38 20-20m-20 35-24-19m24 9 24-19","M40 122V62h120v60M52 62l48-32 48 32M62 75v46m25-46v46m26-46v46m25-46v46","M25 125h150M54 125V60h92v65M42 60l58-33 58 33M70 75v50m30-50v50m30-50v50","M27 123h146M43 122V60m30 62V60m30 62V60m30 62V60m24 62V60M30 60h140L100 30Z","M20 122h160M38 122V69l28-22 27 22v53m20 0V57l27-21 24 21v65M35 80h62M111 73h57","M32 124h138M44 124V79l30-23 30 23v45m16 0V62l24-27 24 27v62","M15 124h170M38 124V65h43v59M97 124V43h44v81M152 124V75h26v49","M17 119Q45 99 75 117T135 117T183 117M35 92l44-47 41 47M78 45l20-17 44 60M100 30v66","M18 125h164M28 107h144l-22 18H53zM95 106V24m0 7L40 92h55m5-61 56 61h-56","M52 75a48 48 0 1 0 96 0a48 48 0 1 0-96 0M52 75h96M100 27v96M65 42q35 33 0 67m70-67q-35 33 0 67","M100 44a36 36 0 1 0 0 72a36 36 0 1 0 0-72M100 26v19m0 70v20M46 80h19m70 0h19M62 42l14 14m48 48 14 14m0-76-14 14m-48 48-14 14","M20 124h160M40 124V70h35v54m20 0V46h38v78m16 0V84h24v40M52 86h11m42-22h12m-12 20h12","M18 126h164M35 126V68h42v58M91 126V50h38v76m15 0V82h25v44M44 85h22m34-18h19m-19 19h19","M51 74a49 49 0 1 0 98 0a49 49 0 1 0-98 0M51 74h98M100 25v98M63 41q40 35 0 66m74-66q-40 35 0 66","M56 75a44 44 0 1 0 88 0a44 44 0 1 0-88 0M57 75h86M100 31v88M28 40l18 18m108 31 18 18M31 120l20-19m100-48 19-19"];
 function eraArt(id,label){const k=Number(id),motif=ERA_MOTIFS[k]||ERA_MOTIFS[0],colors=['#294c48','#374c59','#544a43','#304d57','#36524b','#354b58','#33534e','#4d494d','#294d56','#37535d','#534b46','#3a4d54','#3d4852','#35525a','#2d4d52'];return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 145" preserveAspectRatio="xMidYMid slice" role="img" aria-label="'+esc(label)+'的原创主题符号插画（非史料）"><rect width="200" height="145" fill="'+colors[k%15]+'"/><circle cx="169" cy="23" r="58" fill="#d3b37b" opacity=".11"/><circle cx="26" cy="140" r="74" fill="#d3b37b" opacity=".07"/><g fill="none" stroke="#d3b37b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="'+motif+'"/></g></svg>'}
-function renderEraGallery(){const box=$('eraGallery');if(!box)return;box.innerHTML=D.periods.map(p=>'<button class="era-tile" type="button" data-era="'+p.id+'" aria-label="跳转到'+esc(p.title)+'，'+esc(p.dates)+'">'+eraArt(p.id,p.title)+'<span class="era-name">'+esc(p.title)+'</span><span class="era-years">'+esc(p.dates)+'</span></button>').join('');box.querySelectorAll('[data-era]').forEach(b=>b.addEventListener('click',()=>{const target=$('period-'+b.dataset.era),viewport=$('viewport');if(target){viewport.scrollTop=target.offsetTop-75;viewport.focus({preventScroll:true})}}))}
+function renderEraGallery(){const box=$('eraGallery');if(!box)return;box.innerHTML=D.periods.map(p=>'<button class="era-tile" type="button" data-era="'+p.id+'" aria-label="跳转到'+esc(p.title)+'，'+esc(p.dates)+'">'+eraArt(p.id,p.title)+'<span class="era-name">'+esc(p.title)+'</span><span class="era-years">'+esc(p.dates)+'</span></button>').join('');box.querySelectorAll('[data-era]').forEach(b=>b.addEventListener('click',()=>{jumpPeriod(b.dataset.era)}))}
+
+
+function renderReader(){
+ const box=$('readerView');if(!box)return;
+ const tabs='<nav class="reader-region-tabs" aria-label="章节阅读地区筛选">'+[{id:'all',name:'全部地区'},...D.regions].map(r=>'<button type="button" data-reader-region="'+esc(r.id)+'" aria-pressed="'+(state.region===r.id)+'">'+esc(r.name)+'</button>').join('')+'</nav>';
+ let visible=0;
+ const chapters=D.periods.map(p=>{
+   const regions=D.regions.filter(r=>state.region==='all'||state.region===r.id);
+   const groups=regions.map((r,j)=>{
+     const events=allEvents().filter(e=>e.p===p.id&&e.r===r.id&&matched(e));
+     if(!events.length)return '';
+     visible+=events.length;
+     const color=COLORS[D.regions.findIndex(x=>x.id===r.id)];
+     return '<section class="reader-group" style="--region-color:'+color+'"><h4>'+esc(r.name)+' · '+events.length+'条</h4><div class="reader-cards">'+events.map(e=>'<button type="button" class="reader-event" data-reader-event="'+esc(e.id)+'"><strong>'+esc(e.title)+'</strong><small>'+esc(e.dates)+'</small><span>'+esc(e.desc)+'</span></button>').join('')+'</div></section>';
+   }).join('');
+   const interactions=state.interactions?D.interactions.filter(i=>i.p===p.id&&(state.region==='all'||i.frm===state.region||i.to===state.region)&&(!state.search||[i.name,i.detail,i.tags].join(' ').toLowerCase().includes(state.search))):[];
+   if(!groups&&!interactions.length)return '';
+   return '<section class="reader-chapter" id="reader-period-'+p.id+'"><div class="reader-chapter-head"><div aria-hidden="true">'+eraArt(p.id,p.title)+'</div><div><span class="reader-date">'+esc(p.dates)+'</span><h3>'+esc(p.title)+'</h3><p>'+esc(p.summary)+'</p></div></div><div class="reader-chapter-body">'+groups+(interactions.length?'<div class="reader-relations"><strong>↔ 跨文明联系</strong>'+interactions.map(i=>'<button type="button" data-reader-interaction="'+esc(i.id)+'">'+esc(i.name)+'</button>').join('')+'</div>':'')+'</div></section>';
+ }).join('');
+ box.innerHTML='<div class="reader-intro"><div><h2>沿时间阅读，跨地区探索</h2><p>按年代纵向浏览；选择地区聚焦，再切回「文明矩阵」对照八个地区。所有搜索和主题筛选保持同步。</p></div><span id="readerCount" role="status" aria-live="polite">'+visible+' 条事件</span></div>'+tabs+(chapters||'<p class="reader-empty">当前筛选条件下没有事件，请尝试清除搜索或地区筛选。</p>');
+ box.querySelectorAll('[data-reader-region]').forEach(b=>b.onclick=()=>{$('regionSelect').value=b.dataset.readerRegion;state.region=b.dataset.readerRegion;render()});
+ box.querySelectorAll('[data-reader-event]').forEach(b=>b.onclick=()=>{const e=allEvents().find(x=>x.id===b.dataset.readerEvent);if(e)detail(e)});
+ box.querySelectorAll('[data-reader-interaction]').forEach(b=>b.onclick=()=>{const i=D.interactions.find(x=>x.id===b.dataset.readerInteraction);if(i)interactionDetail(i)});
+}
+function setReader(on){
+ state.reader=on;
+ $('readerBtn').setAttribute('aria-pressed',String(on));
+ $('readerBtn').textContent=on?'▦ 文明矩阵':'▤ 章节阅读';
+ $('readerView').classList.toggle('active',on);
+ document.querySelector('.main-layout').classList.toggle('reader-active',on);
+ $('viewport').setAttribute('aria-hidden',String(on));
+ if(on)renderReader();
+}
+function jumpPeriod(id){
+ if(state.reader){const target=$('reader-period-'+id);if(target)target.scrollIntoView({behavior:'smooth',block:'start'});return}
+ const target=$('period-'+id);if(target){const v=$('viewport');v.scrollTo({top:target.offsetTop-75,behavior:'smooth'})}
+}
 
 function init(){ renderEraGallery(); $('stats').innerHTML=`<span>${D.periods.length} 个历史阶段</span><span>${D.regions.length} 个地区</span><span id="statEvents">${allEvents().length} 条历史事件</span><span>${D.interactions.length} 组跨文明互动</span>`;
 D.periods.forEach(p=>$('periodSelect').add(new Option(p.dates+' · '+p.title,p.id))); D.regions.forEach(r=>$('regionSelect').add(new Option(r.name,r.id)));
 const tags=[...new Set(D.events.flatMap(e=>e.tags))].sort((a,b)=>a.localeCompare(b,'zh-CN'));tags.forEach(t=>$('tagSelect').add(new Option(t,t)));
 $('search').addEventListener('input',e=>{state.search=e.target.value.trim().toLowerCase();render()});$('tagSelect').addEventListener('change',e=>{state.tag=e.target.value;render()});$('regionSelect').addEventListener('change',e=>{state.region=e.target.value;render()});
-$('periodSelect').addEventListener('change',e=>{let target=$('period-'+e.target.value);if(target){let v=$('viewport');v.scrollTo({top:target.offsetTop-75,behavior:'smooth'})}});
+$('periodSelect').addEventListener('change',e=>jumpPeriod(e.target.value));
 $('interactBtn').onclick=()=>{state.interactions=!state.interactions;$('interactBtn').classList.toggle('active',state.interactions);render()};$('compactBtn').onclick=()=>{state.compact=!state.compact;$('compactBtn').classList.toggle('active',state.compact);$('compactBtn').textContent=state.compact?'▤ 详细模式':'▦ 紧凑模式';render()};
 $('sourcedBtn').onclick=()=>{state.sourced=!state.sourced;$('sourcedBtn').classList.toggle('active',state.sourced);$('sourcedBtn').setAttribute('aria-pressed',String(state.sourced));render()};
 $('focusBtn').onclick=()=>{const active=document.body.classList.toggle('atlas-focus');$('focusBtn').setAttribute('aria-pressed',String(active));$('focusBtn').textContent=active?'◐ 退出沉浸':'◐ 沉浸阅读';};
+$('readerBtn').onclick=()=>setReader(!state.reader);
 $('networkBtn').onclick=networkExplorer;
 $('addBtn').onclick=addDialog;$('exportBtn').onclick=exportData;$('importBtn').onclick=()=>$('importFile').click();$('importFile').addEventListener('change',importData);
 $('closeModal').onclick=close;$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close();if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)&&!$('overlay').classList.contains('open')){e.preventDefault();$('search').focus()}});render();}
@@ -214,7 +297,7 @@ D.regions.forEach((r,j)=>{let cell=document.createElement('div');cell.className=
 if(!evs.length){cell.innerHTML='<span class="muted-empty">—</span>'}else{evs.forEach(ev=>{let b=document.createElement('button');b.type='button';b.className='event-card';b.innerHTML=`<div class="event-title">${esc(ev.title)}</div><div class="event-date">${esc(ev.dates)}</div>${ev.people?`<div class="event-people">${esc(ev.people)}</div>`:''}`;b.onclick=()=>detail(ev);cell.append(b)});}
 root.append(cell)});
 if(state.interactions){let its=D.interactions.filter(i=>i.p===p.id&&(!state.search||[i.name,i.detail,i.tags].join(' ').toLowerCase().includes(state.search))&&(state.region==='all'||i.frm===state.region||i.to===state.region));if(its.length){let strip=document.createElement('div');strip.className='interaction-strip';strip.innerHTML='<span class="strip-label">↔ 文明互动</span>';its.forEach(i=>{let b=document.createElement('button');b.className='interaction-pill';b.textContent=`${regionName(i.frm)} ⇄ ${regionName(i.to)} · ${i.name}`;b.onclick=()=>interactionDetail(i);strip.append(b)});root.append(strip)}}
-});$('resultCount').innerHTML=`当前显示 <strong>${count}</strong> 条地区事件 ${state.search?'（搜索中）':''}`;$('statEvents').textContent=allEvents().length+' 条历史事件';}
+});$('resultCount').innerHTML=`当前显示 <strong>${count}</strong> 条地区事件 ${state.search?'（搜索中）':''}`;$('statEvents').textContent=allEvents().length+' 条历史事件';if(state.reader)renderReader();}
 function regionName(id){return D.regions.find(r=>r.id===id)?.name||id}
 function modal(k,t,body){$('modalKicker').textContent=k;$('modalTitle').textContent=t;$('modalBody').innerHTML=body;$('overlay').classList.add('open');$('closeModal').focus()}
 function close(){$('overlay').classList.remove('open')}
