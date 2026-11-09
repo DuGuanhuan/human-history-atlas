@@ -282,6 +282,7 @@ body.dialog-open{overflow:hidden}.overlay.open .panel{overscroll-behavior:contai
 .deep-section{padding:2px clamp(20px,4vw,42px) 0;max-width:840px}.deep-section h3{font-size:19px;color:#1b4c51;margin:26px 0 12px;font-family:Georgia,"Noto Serif SC",serif}.deep-section p{font-size:15px;line-height:2.05;margin:0 0 8px;letter-spacing:.005em}.deep-timeline{padding:0 0 0 18px;margin:0 0 4px;border-left:2px solid #c5d8d0;list-style:none}.deep-timeline li{position:relative;padding:0 0 21px 18px}.deep-timeline li:before{content:'';position:absolute;left:-25px;top:6px;width:11px;height:11px;background:#387568;border-radius:50%;border:3px solid #fffdf8}.deep-timeline h4{font-size:16px;color:#2d5057;margin:8px 0}.deep-timeline p{font-size:14.5px}.deep-time{font-size:12px;font-weight:750;color:#7b6151;letter-spacing:.025em}
 .deep-world{background:#f1f5ef;padding-top:2px;padding-bottom:20px;margin:22px 0 0;max-width:none}.deep-world>p,.deep-world>h3{max-width:760px}.deep-limits{margin-top:14px}.deep-takeaway{margin:24px clamp(20px,4vw,42px);padding:17px 20px;background:#f0e5ce;border-left:4px solid #b3874c;border-radius:9px}.deep-takeaway h3{font-size:15px;color:#72532f;margin:0 0 8px}.deep-takeaway p{margin:0;line-height:1.9;font-size:15px}.deep-sources{margin:0 clamp(20px,4vw,42px) 30px;border-top:1px solid #dce2db;padding-top:14px}.deep-sources summary{cursor:pointer;font-size:14px;font-weight:750;min-height:44px;display:flex;align-items:center;color:#225764}.deep-sources a{overflow-wrap:anywhere}.deep-sources li{margin:14px 0}.deep-sources li p{font-size:12px;color:#687781;line-height:1.6;margin:4px 0}.deep-sources>p{font-size:12px;line-height:1.7;color:#69747a}
 @media(max-width:600px){.deep-hero{padding:22px 17px}.deep-section{padding-left:17px;padding-right:17px}.deep-takeaway{margin:20px 17px}.deep-sources{margin:0 17px 22px}.deep-section p{line-height:1.94}}
+.deep-progress{height:4px;background:#dbe7e1;position:sticky;top:0;z-index:4}.deep-progress-bar{display:block;width:0;height:100%;background:#4d9185;transition:width .15s ease}.deep-reader-nav{padding:16px clamp(20px,4vw,42px);background:#f2f6f3;border-bottom:1px solid #dce5dd}.deep-reader-nav strong{font-size:12px;color:#4e696a}.deep-reader-nav>div{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.deep-reader-nav a{display:inline-flex;align-items:center;min-height:38px;border:1px solid #c9dbd5;background:#fff;border-radius:8px;padding:7px 11px;text-decoration:none;color:#20555b;font-size:13px;font-weight:650}.deep-reader-nav a:hover,.deep-reader-nav a:focus-visible{background:#e0eeea}.deep-feature [id^="deep-"]{scroll-margin-top:24px}.deep-feature [tabindex="-1"]:focus{outline:none}@media(max-width:600px){.deep-reader-nav{padding:14px 17px}.deep-reader-nav>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.deep-reader-nav a{justify-content:center}}@media(prefers-reduced-motion:reduce){.deep-progress-bar{transition:none}}
 </style>
 </head>
 <body>
@@ -453,6 +454,7 @@ function modal(k,t,body){
  overlay.classList.add('open');document.body.classList.add('dialog-open');
  $('modalBody').scrollTop=0;overlay.querySelector('.panel').scrollTop=0;
  $('closeModal').focus();
+ wireDeepReader();
 }
 function close(){
  const overlay=$('overlay');if(!overlay.classList.contains('open'))return;
@@ -478,19 +480,21 @@ function renderSource(s){
  return esc(found[1])+'：<a target="_blank" rel="noopener noreferrer" href="'+esc(found[2])+'">'+esc(found[2])+'</a>';
 }
 
+function deepReaderNav(){const links=[['deep-context','历史现场'],['deep-process','关键过程'],['deep-impact','结果与影响'],['deep-world','世界联系'],['deep-limits','证据边界'],['deep-takeaway','读完记住'],['deep-sources','核查资料']];return '<nav class="deep-reader-nav" aria-label="本专题章节导航"><strong>本篇导览</strong><div>'+links.map(([id,label])=>'<a href="#'+id+'" data-deep-jump="'+id+'">'+label+'</a>').join('')+'</div></nav>'}
+function wireDeepReader(){const body=$('modalBody');if(!body.querySelector('.deep-feature'))return;body.querySelectorAll('[data-deep-jump]').forEach(link=>link.addEventListener('click',ev=>{ev.preventDefault();const el=body.querySelector('#'+link.dataset.deepJump);if(!el)return;if(el.tagName==='DETAILS')el.open=true;el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});el.focus({preventScroll:true})}));const panel=$('overlay').querySelector('.panel');if(panel._deepScrollHandler)panel.removeEventListener('scroll',panel._deepScrollHandler);const update=()=>{const bar=body.querySelector('.deep-progress-bar');if(!bar)return;const max=panel.scrollHeight-panel.clientHeight;bar.style.width=(max>0?Math.min(100,Math.round(panel.scrollTop/max*100)):100)+'%'};panel._deepScrollHandler=update;panel.addEventListener('scroll',update,{passive:true});requestAnimationFrame(update)}
 function deepDiveHTML(e){
  const d=e.deepDive;
  const escData=t=>esc(t||'');
  const beats=d.beats.map((b,i)=>'<li><span class="deep-time">'+escData(b.when)+'</span><h4>'+(i+1)+'. '+escData(b.title)+'</h4><p>'+escData(b.text)+'</p></li>').join('');
  const sources=d.sources.filter(s=>Array.isArray(s)&&/^https:\/\//.test(s[1])).map(s=>'<li><a href="'+escData(s[1])+'" target="_blank" rel="noopener noreferrer">'+escData(s[0])+'</a><p>'+escData(s[2])+'</p></li>').join('');
  return '<article class="deep-feature" aria-label="深入历史专题"><div class="deep-hero"><span class="deep-eyebrow">深读世界历史 · 经资料对照的专题</span><h3>这段历史到底发生了什么？</h3><p class="deep-lead">'+escData(d.lead)+'</p><div class="deep-badges"><span>地点：'+escData(regionName(e.r))+'</span><span>时期：'+escData(e.dates)+'</span><span>约 4–6 分钟阅读</span></div></div>'
- +'<section class="deep-section"><h3>进入历史现场</h3><p>'+escData(d.setting)+'</p></section>'
- +'<section class="deep-section"><h3>事情是怎样一步步发生的？</h3><ol class="deep-timeline">'+beats+'</ol></section>'
- +'<section class="deep-section"><h3>结果与意义</h3><p>'+escData(d.outcome)+'</p></section>'
- +'<section class="deep-section deep-world"><h3>放进世界中看</h3><p>'+escData(d.world)+'</p></section>'
- +'<section class="deep-section deep-limits"><h3>哪些结论需要谨慎？</h3><p>'+escData(d.limits)+'</p></section>'
- +'<section class="deep-takeaway"><h3>读完请记住</h3><p>'+escData(d.takeaway)+'</p></section>'
- +'<details class="deep-sources"><summary>查看可核查资料和各自支持的内容（'+d.sources.length+'项）</summary><p>这些来源用于支撑所列主题范围，并不表示每句文字都已完成逐页引文审计。</p><ol>'+sources+'</ol></details></article>';
+ +deepReaderNav()+'<section class="deep-section" id="deep-context" tabindex="-1"><h3>进入历史现场</h3><p>'+escData(d.setting)+'</p></section>'
+ +'<section class="deep-section" id="deep-process" tabindex="-1"><h3>事情是怎样一步步发生的？</h3><ol class="deep-timeline">'+beats+'</ol></section>'
+ +'<section class="deep-section" id="deep-impact" tabindex="-1"><h3>结果与意义</h3><p>'+escData(d.outcome)+'</p></section>'
+ +'<section class="deep-section deep-world" id="deep-world" tabindex="-1"><h3>放进世界中看</h3><p>'+escData(d.world)+'</p></section>'
+ +'<section class="deep-section deep-limits" id="deep-limits" tabindex="-1"><h3>哪些结论需要谨慎？</h3><p>'+escData(d.limits)+'</p></section>'
+ +'<section class="deep-takeaway" id="deep-takeaway" tabindex="-1"><h3>读完请记住</h3><p>'+escData(d.takeaway)+'</p></section>'
+ +'<details class="deep-sources" id="deep-sources" tabindex="-1"><summary>查看可核查资料和各自支持的内容（'+d.sources.length+'项）</summary><p>这些来源用于支撑所列主题范围，并不表示每句文字都已完成逐页引文审计。</p><ol>'+sources+'</ol></details></article>';
 }
 function eventStory(e){
  if(e.deepDive)return deepDiveHTML(e);
