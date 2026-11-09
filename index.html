@@ -454,7 +454,7 @@ function openJourney(id,index=0){
  const body=$('modalBody');body.querySelectorAll('[data-journey-step]').forEach(b=>b.onclick=()=>openJourney(r.id,Number(b.dataset.journeyStep)));
  const prev=$('journeyPrev');if(prev)prev.onclick=()=>openJourney(r.id,i-1);
  $('journeyNext').onclick=()=>openJourney(r.id,i===r.ids.length-1?0:i+1);
- $('journeyMoment').onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;close();$('momentPeriod').value=String(e.p);focusedMomentRegion=null;renderMoment();$('momentSection')?.scrollIntoView({block:'start',behavior:'auto'});};
+ $('journeyMoment').onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;close();$('momentPeriod').value=String(e.p);focusedMomentRegion=null;renderMoment();$('moment')?.scrollIntoView({block:'start',behavior:'auto'});};
 }
 function init(){ renderJourneys(); initMoment(); renderEraGallery(); $('stats').innerHTML=`<span>${D.periods.length} 个历史阶段</span><span>${D.regions.length} 个地区</span><span id="statEvents">${allEvents().length} 条历史事件</span><span>${D.interactions.length} 组跨文明互动</span>`;
 D.periods.forEach(p=>$('periodSelect').add(new Option(p.dates+' · '+p.title,p.id))); D.regions.forEach(r=>$('regionSelect').add(new Option(r.name,r.id)));
