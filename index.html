@@ -261,6 +261,8 @@ body.dialog-open{overflow:hidden}.overlay.open .panel{overscroll-behavior:contai
 @media(max-width:700px){.artifact-viewer{grid-template-columns:minmax(0,1fr)}.artifact-viewer-copy dl{grid-template-columns:90px minmax(0,1fr)}.artifact-viewer-image{min-height:190px}.artifact-actions{align-items:stretch}.artifact-actions .btn{width:100%}}
 
 .connection-bridge{border:1px solid #d4e4df;background:linear-gradient(135deg,#f2f8f5,#fffdf7);padding:18px;border-radius:18px;margin:20px 0}.connection-bridge h3{margin-top:0}.connection-bridge .related-event{display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-align:left}.connection-bridge .related-event small{font-size:12px;color:#627778}.bridge-regions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.bridge-region{display:flex;flex-direction:column;gap:8px;min-width:0}.bridge-region h4{margin:0 0 4px}.bridge-back{margin:6px 0 18px}@media(max-width:650px){.bridge-regions{grid-template-columns:1fr}.connection-bridge{padding:14px}}
+
+.moment{margin:20px clamp(12px,3vw,40px) 24px;padding:clamp(18px,3vw,32px);background:#102f39;color:#edf5f2;border-radius:24px;box-shadow:0 18px 48px #15353a22}.moment-top{display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap}.moment-kicker{font-size:11px;letter-spacing:.19em;color:#c3d4bb;font-weight:800}.moment h2{font-size:clamp(25px,3vw,40px);line-height:1.18;margin:8px 0}.moment p{line-height:1.65}.moment-sub{max-width:650px;color:#d0dfdf;font-size:13px;margin:6px 0 0}.moment-picker{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;color:#d6e5dd}.moment-picker select{min-width:min(330px,80vw);max-width:100%;border:1px solid #a3c2bb;border-radius:12px;background:#f9f9f1;color:#213d40;padding:11px}.moment-context{margin:18px 0 12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.moment-context strong{color:#f0d5a1;font-size:15px}.moment-context span{font-size:12px;color:#cbdcd8}.moment-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.moment-region{min-width:0;background:#ffffff0e;border:1px solid #ffffff29;border-top:3px solid var(--moment-color);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}.moment-region h3{margin:0;font-size:14px;color:#fff}.moment-region small{font-size:11px;color:#c0d5d1}.moment-event{display:block;text-align:left;width:100%;background:#f9faf3;color:#193941;border:1px solid transparent;border-radius:9px;padding:10px;line-height:1.4}.moment-event:hover,.moment-event:focus-visible{border-color:#d7b77a;background:#fff}.moment-event strong{display:block;font-size:13px}.moment-event span{display:block;font-size:11px;color:#536d70;margin-top:5px}.moment-empty{color:#c5d7d3;font-size:12px;margin:0}.moment-links{margin-top:15px;padding:14px;background:#ffffff0b;border-radius:13px}.moment-links h3{font-size:13px;margin:0 0 9px}.moment-linklist{display:flex;gap:8px;flex-wrap:wrap}.moment-link{border:1px solid #9cbbb4;background:transparent;color:#f3f7f2;padding:9px 11px;border-radius:10px;text-align:left;font-size:12px}.moment-link:hover,.moment-link:focus-visible{background:#ffffff20}.moment-foot{font-size:11px;color:#c4d8d5;margin:12px 0 0}@media(max-width:950px){.moment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.moment{margin:10px 8px 18px;border-radius:17px;padding:17px}.moment-grid{grid-template-columns:1fr}.moment-region{padding:12px}.moment-picker,.moment-picker select{width:100%}}
 </style>
 </head>
 <body>
@@ -283,6 +285,7 @@ body.dialog-open{overflow:hidden}.overlay.open .panel{overscroll-behavior:contai
 <button class="btn" id="importBtn">↑ 导入</button><input id="importFile" type="file" accept="application/json,.json" hidden/>
 </div>
 <div class="hintline"><span id="resultCount"><strong>时间线已载入</strong></span><span>提示：按 / 聚焦搜索 · 横向滚动浏览地区 · 纵向滚动穿越时代 · 点击事件展开详情</span></div>
+<section class="moment" id="moment" aria-labelledby="momentTitle"><div class="moment-top"><div><div class="moment-kicker">ONE MOMENT · EIGHT REGIONS</div><h2 id="momentTitle">世界同一刻</h2><p class="moment-sub">先看同一历史阶段的八个地区，再沿着事件与跨地区关系继续探索。没有任何单一文明作为默认起点。</p></div><label class="moment-picker" for="momentPeriod">选择历史阶段<select id="momentPeriod"></select></label></div><div class="moment-context" id="momentContext" aria-live="polite"></div><div class="moment-grid" id="momentGrid"></div><div class="moment-links"><h3>这个阶段记录的跨地区联系 · 点击探索</h3><div class="moment-linklist" id="momentLinks"></div></div><p class="moment-foot">各阶段长度不同；同一阶段不等于同一年，更不代表事件之间存在因果。空白代表尚未收录。关系线索需要进一步核验来源。</p></section>
 <section class="era-gallery" aria-label="图解历史阶段"><div class="gallery-heading"><div><div class="gallery-kicker">VISUAL CHAPTERS / 图解时代</div><h2>十五个时代，一幅人类历史长卷</h2></div><p>原创象征性插画，帮助识别历史主题；并非出土文物、真实人物肖像或历史地图。点击任一时代，直接定位时间线。</p></div><div class="era-gallery-track" id="eraGallery"></div></section><main class="main-layout"><div class="reader-view" id="readerView" aria-label="纵向章节阅读"></div><div class="timeline-viewport" id="viewport" tabindex="0"><div class="timeline-grid" id="timeline"></div></div><div class="legend"><strong>阅读方式：</strong>每一行是一个历史阶段；不同列代表地区；<strong>↔ 互动</strong>展示贸易、宗教、知识传播、殖民与战争等跨区域联系。历史人物标在事件下方，表示相关人物而非该时代的唯一代表。<br/><strong>持续更新：</strong>可以点击「新增事件」扩充自己的时间线，点击历史事件添加私人笔记。新增事件与笔记保存在当前浏览器的本地存储中；<strong>请定期导出 JSON 备份</strong>。本文件可离线使用，无需登录或联网。<br/><strong>精度说明：</strong>各行是为了方便比较而设置的非等比例时段；日期是参考范围，部分文明延续跨越多行；不同地区历史并不同步。图表着重宏观框架，不意味着未显示的地区当时没有文明。</div><div class="footer">世界历史时间线 · v3.0 · 以区域与互动为骨架，可不断增补。内容为学习用概览，具体史实可逐条核查。</div></main>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalKicker"><div class="panel"><div class="top"><div><small id="modalKicker"></small><h2 id="modalTitle"></h2></div><button class="close" id="closeModal" aria-label="关闭">×</button></div><div class="body" id="modalBody"></div></div></div>
 <div class="toast" id="toast"></div>
@@ -364,7 +367,31 @@ function jumpPeriod(id){
  const target=$('period-'+id);if(target){const v=$('viewport');v.scrollTo({top:target.offsetTop-75,behavior:'smooth'})}
 }
 
-function init(){ renderEraGallery(); $('stats').innerHTML=`<span>${D.periods.length} 个历史阶段</span><span>${D.regions.length} 个地区</span><span id="statEvents">${allEvents().length} 条历史事件</span><span>${D.interactions.length} 组跨文明互动</span>`;
+
+function renderMoment(){
+ const select=$('momentPeriod'),p=D.periods.find(x=>String(x.id)===select.value);if(!p)return;
+ $('momentContext').innerHTML='<strong>'+esc(p.dates)+' · '+esc(p.title)+'</strong><span>'+esc(p.summary)+'</span>';
+ const grid=$('momentGrid');grid.replaceChildren();
+ D.regions.forEach((r,j)=>{
+  const card=document.createElement('section');card.className='moment-region';card.style.setProperty('--moment-color',COLORS[j]);
+  const title=document.createElement('h3');title.textContent=r.name;card.append(title);
+  const events=allEvents().filter(e=>e.p===p.id&&e.r===r.id);
+  const count=document.createElement('small');count.textContent=events.length+' 条已收录事件';card.append(count);
+  if(!events.length){const empty=document.createElement('p');empty.className='moment-empty';empty.textContent='此阶段暂无收录；不代表没有历史。';card.append(empty)}
+  events.slice(0,2).forEach(e=>{const b=document.createElement('button');b.type='button';b.className='moment-event';const strong=document.createElement('strong');strong.textContent=e.title;const date=document.createElement('span');date.textContent=e.dates;b.append(strong,date);b.onclick=()=>detail(e);card.append(b)});
+  if(events.length>2){const more=document.createElement('button');more.className='moment-link';more.type='button';more.textContent='查看本地区全部 '+events.length+' 条 →';more.onclick=()=>periodAtlas(p.id);card.append(more)}
+  grid.append(card);
+ });
+ const links=$('momentLinks');links.replaceChildren();const items=D.interactions.filter(i=>i.p===p.id);
+ if(!items.length){const span=document.createElement('span');span.className='moment-empty';span.textContent='这一阶段尚未收录跨地区联系。';links.append(span)}
+ items.forEach(i=>{const b=document.createElement('button');b.type='button';b.className='moment-link';b.textContent=regionName(i.frm)+' ↔ '+regionName(i.to)+' · '+i.title;b.onclick=()=>interactionDetail(i);links.append(b)});
+}
+function initMoment(){
+ const select=$('momentPeriod');D.periods.forEach(p=>select.add(new Option(p.dates+' · '+p.title,p.id)));
+ select.value='7';select.addEventListener('change',renderMoment);renderMoment();
+}
+
+function init(){ initMoment(); renderEraGallery(); $('stats').innerHTML=`<span>${D.periods.length} 个历史阶段</span><span>${D.regions.length} 个地区</span><span id="statEvents">${allEvents().length} 条历史事件</span><span>${D.interactions.length} 组跨文明互动</span>`;
 D.periods.forEach(p=>$('periodSelect').add(new Option(p.dates+' · '+p.title,p.id))); D.regions.forEach(r=>$('regionSelect').add(new Option(r.name,r.id)));
 const tags=[...new Set(D.events.flatMap(e=>e.tags))].sort((a,b)=>a.localeCompare(b,'zh-CN'));tags.forEach(t=>$('tagSelect').add(new Option(t,t)));
 $('search').addEventListener('input',e=>{state.search=e.target.value.trim().toLowerCase();render()});$('tagSelect').addEventListener('change',e=>{state.tag=e.target.value;render()});$('regionSelect').addEventListener('change',e=>{state.region=e.target.value;render()});
