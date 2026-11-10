@@ -94,6 +94,23 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await expect(page.locator('#compareRegion')).toHaveValue('all');
    await expect(page.locator('#compareSearch')).toBeFocused();
   });
+  test('未保存草稿 → 同期事件切换 → 返回原事件仍存在',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#search').fill('印度河');
+   await page.locator('.event-card').first().click();
+   const draft='自动保存草稿 '+device.name+' · '+Date.now();
+   await page.locator('#noteArea').fill(draft);
+   await page.locator('[data-related-id]').first().click();
+   await expect(page.locator('#modalBody')).toHaveAttribute('data-note-owner',/^e[0-9]+$/);
+   await page.keyboard.press('Escape');
+   await page.locator('#search').fill('印度河');
+   await page.locator('.event-card').first().click();
+   await expect(page.locator('#noteArea')).toHaveValue(draft);
+   await page.locator('#noteArea').fill(draft+' · 关闭时保存');
+   await page.keyboard.press('Escape');
+   await page.locator('.event-card').first().click();
+   await expect(page.locator('#noteArea')).toHaveValue(draft+' · 关闭时保存');
+  });
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
    await page.goto(pageUrl);
    await page.locator('#search').fill('苏美尔');
