@@ -35,6 +35,11 @@ for(const e of data.events){
  const chars=d?[d.lead,d.setting,...(d.beats||[]).map(b=>b.text),d.outcome,d.world,d.limits,d.takeaway].join('').length: e.story?JSON.stringify(e.story).length: [e.desc,e.background,e.impact,e.debate].filter(Boolean).join('').length;
  audit.push({id:e.id,region:e.r,period:e.p,grade,chars,sourceLinks:d?.sources?.length||0});
 }
+// Curated editorial regression: prevent a neighbouring civilization's summary from being pasted into the Indus card.
+const indus=data.events.find(e=>e.id==='e10');
+assert(indus&&indus.r==='sa','Indus region changed unexpectedly');
+assert(/印度河|哈拉帕|摩亨佐/.test(indus.background),'Indus background lacks its own historical context');
+assert(!/乌鲁克|后续西亚政治经济制度/.test([indus.background,indus.impact,indus.debate].join('')),'Mesopotamian editorial text leaked into Indus overview');
 for(const e of deep){
  const d=e.deepDive;
  assert(Array.isArray(d.beats)&&d.beats.length>=3,'Missing chronological process '+e.id);
