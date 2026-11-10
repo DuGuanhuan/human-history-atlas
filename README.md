@@ -9,6 +9,8 @@
 
 - `node tests/validate.mjs` 还会生成 `test-results/content-audit.json`：逐条列出121事件的地区、时期、正文等级、篇幅和深读来源条目数；这只是编辑工作量审计，**不代表来源链接已经打开核验**。
 
+- `node tests/validate.mjs` 同时生成 `test-results/evidence-audit.json`：列出全部事件的深读链接、各链接声称支持的范围、域名分布及待核状态。**域名不同不代表机构独立，链接存在不代表已经打开或逐项核实**；报告中的 `claimLevelVerified` 与 `independentOrganizationsVerified` 均保守标记为 false。
+
 ## 项目文件
 - `index.html` — 可交互网站入口（当前完整 HTML）
 - `history-data.json` — 从旧版生成流程保留的历史数据快照，供后续模块化重构；目前网站运行**不依赖**它，避免误认为已自动同步
