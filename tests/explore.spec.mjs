@@ -79,6 +79,21 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await expect(card.locator('.moment-expand')).toHaveAttribute('aria-expanded','true');
    await page.screenshot({path:'test-results/'+device.name+'-expanded-regions.png',fullPage:true});
   });
+  test('同期比较排序与筛选重置保持可操作',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#search').fill('印度河');
+   await page.locator('.event-card').first().click();
+   const comparison=page.locator('#compareSort').locator('xpath=ancestor::section[1]');
+   const before=await comparison.locator('[data-related-id]').count();
+   expect(before).toBeGreaterThan(0);
+   await page.locator('#compareSort').click();
+   await expect(page.locator('#compareSort')).toHaveAttribute('aria-pressed','true');
+   await expect(comparison.locator('[data-related-id]')).toHaveCount(before);
+   await page.locator('#compareRegion').selectOption({index:1});
+   await page.locator('#compareReset').click();
+   await expect(page.locator('#compareRegion')).toHaveValue('all');
+   await expect(page.locator('#compareSearch')).toBeFocused();
+  });
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
    await page.goto(pageUrl);
    await page.locator('#search').fill('苏美尔');
