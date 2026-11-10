@@ -66,3 +66,6 @@ assert.equal(audit.length,deep.length+guide.length+brief.length,'Audit does not 
 fs.mkdirSync('test-results',{recursive:true});
 fs.writeFileSync('test-results/content-audit.json',JSON.stringify({generatedAt:new Date().toISOString(),total:audit.length,coverage,events:audit},null,2)+'\n');
 console.log(JSON.stringify({events:data.events.length,deep:deep.length,guide:guide.length,brief:brief.length,interactions:data.interactions.length,static:'PASS',audit:'test-results/content-audit.json'}));
+
+assert(html.includes('deep-evidence-guide'),'Missing deep evidence reading guide');
+assert(html.includes('data-deep-target="deep-sources"'),'Missing evidence-to-source action');
