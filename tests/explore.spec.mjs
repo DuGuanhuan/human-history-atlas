@@ -114,6 +114,32 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await page.keyboard.press('Enter');
    await expect(page.locator('#noteArea')).toHaveValue(draft+' · 关闭时保存');
   });
+
+  test('真实馆藏 → 证据边界 → 原始记录 → 离线回退 → 返回事件',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#search').fill('埃及');
+   const card=page.locator('.event-card').filter({hasText:'埃及'}).first();
+   await card.focus();
+   await page.keyboard.press('Enter');
+   await expect(page.locator('#overlay')).toHaveClass(/open/);
+   const artifact=page.locator('[data-artifact-view="e13"]');
+   if(await artifact.count()===0){
+    await page.keyboard.press('Escape');
+    await page.locator('#search').fill('');
+    await page.locator('.event-card').filter({has:page.locator('.artifact-thumb')}).first().click();
+   }
+   await page.locator('[data-artifact-view="e13"]').click();
+   await expect(page.locator('.artifact-viewer')).toBeVisible();
+   await expect(page.locator('.artifact-viewer-copy')).toContainText('局限');
+   await expect(page.locator('.artifact-viewer-copy a[href*="metmuseum.org"]')).toHaveAttribute('rel',/noopener/);
+   await page.locator('.artifact-viewer-image img').evaluate(img=>img.dispatchEvent(new Event('error')));
+   await expect(page.locator('.artifact-viewer-fallback')).toBeVisible();
+   await expect(page.locator('.artifact-viewer-fallback')).toContainText('并非历史实物照片');
+   await page.locator('#artifactBack').click();
+   await expect(page.locator('#modalBody')).toContainText('埃及');
+   await page.screenshot({path:'test-results/'+device.name+'-artifact-fallback.png'});
+  });
+
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
    await page.goto(pageUrl);
    await page.locator('#search').fill('苏美尔');
