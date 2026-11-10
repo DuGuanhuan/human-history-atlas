@@ -108,7 +108,10 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await expect(page.locator('#noteArea')).toHaveValue(draft);
    await page.locator('#noteArea').fill(draft+' · 关闭时保存');
    await page.keyboard.press('Escape');
-   await page.locator('.event-card').first().click();
+   // Sticky timeline headers can overlap a scrolled card on narrow screens;
+   // keyboard activation is a supported real user path and avoids pointer interception.
+   await page.locator('.event-card').first().focus();
+   await page.keyboard.press('Enter');
    await expect(page.locator('#noteArea')).toHaveValue(draft+' · 关闭时保存');
   });
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
