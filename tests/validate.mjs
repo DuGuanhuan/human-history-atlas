@@ -23,6 +23,9 @@ const brief=data.events.filter(e=>!e.deepDive&&!e.story);
 const missing=[];
 const coverage=Object.fromEntries(data.regions.map(r=>[r.id,{region:r.name,deep:0,guide:0,brief:0}]));
 const audit=[];
+const evidenceAudit=[];
+const normalizedHost=url=>{try{return new URL(url).hostname.replace(/^www\\./,'');}catch{return null;}};
+
 for(const e of data.events){
  assert(regionIDs.has(e.r),'Unknown region '+e.id);
  assert(periodIDs.has(e.p),'Unknown period '+e.id);
@@ -34,6 +37,9 @@ for(const e of data.events){
  const d=e.deepDive;
  const chars=d?[d.lead,d.setting,...(d.beats||[]).map(b=>b.text),d.outcome,d.world,d.limits,d.takeaway].join('').length: e.story?JSON.stringify(e.story).length: [e.desc,e.background,e.impact,e.debate].filter(Boolean).join('').length;
  audit.push({id:e.id,region:e.r,period:e.p,grade,chars,sourceLinks:d?.sources?.length||0});
+ const links=(d?.sources||[]).map(s=>({label:s[0],url:s[1],scope:s[2],host:normalizedHost(s[1])}));
+ const hosts=[...new Set(links.map(x=>x.host).filter(Boolean))];
+ evidenceAudit.push({id:e.id,title:e.title,region:e.r,grade,links,distinctHosts:hosts.length,independentOrganizationsVerified:false,claimLevelVerified:false,editorialWarning:d&&hosts.length<2?'来源网址仅涉及一个域名；不能据此证明独立交叉核验':d?'域名不同不等于机构独立或论断已核实':'尚无完整深读来源范围'});
 }
 // Curated editorial regression: prevent a neighbouring civilization's summary from being pasted into the Indus card.
 const indus=data.events.find(e=>e.id==='e10');
@@ -66,6 +72,7 @@ assert.equal(new Set(data.interactions.map(i=>i.id)).size,data.interactions.leng
 assert.equal(audit.length,deep.length+guide.length+brief.length,'Audit does not cover every event');
 fs.mkdirSync('test-results',{recursive:true});
 fs.writeFileSync('test-results/content-audit.json',JSON.stringify({generatedAt:new Date().toISOString(),total:audit.length,coverage,events:audit},null,2)+'\n');
+fs.writeFileSync('test-results/evidence-audit.json',JSON.stringify({generatedAt:new Date().toISOString(),status:'Editorial inventory only; no external URLs opened or verified by this script',total:evidenceAudit.length,deepWithSingleHost:evidenceAudit.filter(x=>x.grade==='deep'&&x.distinctHosts<2).map(x=>x.id),events:evidenceAudit},null,2)+'\n');
 console.log(JSON.stringify({events:data.events.length,deep:deep.length,guide:guide.length,brief:brief.length,interactions:data.interactions.length,static:'PASS',audit:'test-results/content-audit.json'}));
 
 assert(html.includes('deep-evidence-guide'),'Missing deep evidence reading guide');
