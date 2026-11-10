@@ -40,6 +40,7 @@ const indus=data.events.find(e=>e.id==='e10');
 assert(indus&&indus.r==='sa','Indus region changed unexpectedly');
 assert(/印度河|哈拉帕|摩亨佐/.test(indus.background),'Indus background lacks its own historical context');
 assert(!/乌鲁克|后续西亚政治经济制度/.test([indus.background,indus.impact,indus.debate].join('')),'Mesopotamian editorial text leaked into Indus overview');
+assert(!indus.sources.some(s=>/乌鲁克|古代西亚|Ancient Mesopotamia|Ancient Near East/.test(s)),'Indus bibliography still points to unrelated Mesopotamian overviews');
 for(const e of deep){
  const d=e.deepDive;
  assert(Array.isArray(d.beats)&&d.beats.length>=3,'Missing chronological process '+e.id);
