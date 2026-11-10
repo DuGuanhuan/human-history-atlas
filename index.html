@@ -512,7 +512,7 @@ function initMomentCompare(){
  };
  $('compareShare').onclick=async()=>{
   const link=comparisonLink();
-  try{if(!navigator.clipboard||!window.isSecureContext)throw Error('clipboard unavailable');await navigator.clipboard.writeText(link);toast('已复制对照链接');}
+  try{if(!navigator.clipboard||!window.isSecureContext)throw Error('clipboard unavailable');await navigator.clipboard.writeText(link);notice('已复制对照链接');}
   catch(_){window.prompt('复制以下对照链接',link);}
  };
  renderMomentCompare();
