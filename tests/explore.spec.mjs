@@ -132,6 +132,32 @@ for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',widt
    await page.screenshot({path:'test-results/'+device.name+'-artifact-fallback.png'});
   });
 
+  test('双区比较 → 交换 → 分享链接 → 刷新恢复 → 证据阅读',async({page})=>{
+   await page.goto(pageUrl);
+   await page.locator('#momentPeriod').selectOption('4');
+   await page.locator('#compareA').selectOption('af');
+   await page.locator('#compareB').selectOption('wa');
+   await page.locator('#compareSwap').click();
+   await expect(page.locator('#compareA')).toHaveValue('wa');
+   await expect(page.locator('#compareB')).toHaveValue('af');
+   const shared=await page.evaluate(()=>{
+    const u=new URL(location.href);
+    u.searchParams.set('period',document.querySelector('#momentPeriod').value);
+    u.searchParams.set('regions',[document.querySelector('#compareA').value,document.querySelector('#compareB').value].join(','));
+    u.hash='moment';return u.href;
+   });
+   await page.goto(shared);
+   await expect(page.locator('#momentPeriod')).toHaveValue('4');
+   await expect(page.locator('#compareA')).toHaveValue('wa');
+   await expect(page.locator('#compareB')).toHaveValue('af');
+   await expect(page.locator('#compareResult .compare-column')).toHaveCount(2);
+   await page.locator('#compareResult [data-compare-event]').first().click();
+   await expect(page.locator('#overlay')).toHaveClass(/open/);
+   await page.keyboard.press('Escape');
+   await expect(page.locator('#compareA')).toHaveValue('wa');
+   await page.screenshot({path:'test-results/'+device.name+'-shareable-compare.png'});
+  });
+
   test('搜索 → 事件详情 → 键盘关闭并恢复焦点',async({page})=>{
    await page.goto(pageUrl);
    await page.locator('#search').fill('苏美尔');
