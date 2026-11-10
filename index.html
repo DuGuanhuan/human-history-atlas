@@ -504,21 +504,24 @@ function journeyBody(r,index){
 }
 function openJourney(id,index=0,focusTarget=null){
  const r=JOURNEYS.find(x=>x.id===id);if(!r)return;
- const i=Math.max(0,Math.min(r.ids.length,index));activeJourney={id:r.id,index:i};
+ const i=Math.max(0,Math.min(r.ids.length,index));
+ // Preserve unsaved reading notes when changing chapters; explicit Save remains available.
+ if(activeJourney&&$('overlay').classList.contains('open')){const draft=$('journeyNote');const previous=JOURNEYS.find(x=>x.id===activeJourney.id);const eventId=previous?.ids[activeJourney.index];if(draft&&eventId&&draft.value!==(notes[eventId]||'')){notes[eventId]=draft.value;save();}}
+ activeJourney={id:r.id,index:i};
  modal('跨文明深读 · '+(i===r.ids.length?'证据对照':(i+1)+' / '+r.ids.length),r.title,journeyBody(r,i));
  const body=$('modalBody');
  body.querySelectorAll('[data-journey-step]').forEach(b=>b.onclick=()=>openJourney(r.id,Number(b.dataset.journeyStep),'[aria-current="step"]'));
  const prev=$('journeyPrev');if(prev)prev.onclick=()=>openJourney(r.id,i-1,'#journeyPrev');
  $('journeyNext').onclick=()=>openJourney(r.id,i===r.ids.length?0:i+1,'#journeyNext');
  const noteSave=$('journeySaveNote');if(noteSave)noteSave.onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;notes[e.id]=$('journeyNote').value;save();notice('本篇笔记已保存')};
- const moment=$('journeyMoment');if(moment)moment.onclick=()=>{const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;close();$('momentPeriod').value=String(e.p);focusedMomentRegion=null;renderMoment();showJourneyResume();$('moment')?.scrollIntoView({block:'start',behavior:'auto'});};
+ const moment=$('journeyMoment');if(moment)moment.onclick=()=>{const draft=$('journeyNote');const eventId=r.ids[i];if(draft&&eventId&&draft.value!==(notes[eventId]||'')){notes[eventId]=draft.value;save();} const e=D.events.find(x=>x.id===r.ids[i]);if(!e)return;close();$('momentPeriod').value=String(e.p);focusedMomentRegion=null;renderMoment();showJourneyResume();$('moment')?.scrollIntoView({block:'start',behavior:'auto'});};
  if(focusTarget){const target=body.querySelector(focusTarget);if(target)target.focus();}
 }
 function showJourneyResume(){
  const moment=$('moment');if(!moment||!activeJourney)return;
  let button=$('journeyResume');if(!button){button=document.createElement('button');button.id='journeyResume';button.type='button';button.className='btn journey-resume';moment.prepend(button)}
  const r=JOURNEYS.find(x=>x.id===activeJourney.id);
- button.textContent='← 返回阅读路线「'+r.title+'」· 第'+(activeJourney.index+1)+'站';
+ button.textContent='← 返回阅读路线「'+r.title+'」· '+(activeJourney.index===r.ids.length?'证据对照':'第'+(activeJourney.index+1)+'站');
  button.onclick=()=>openJourney(activeJourney.id,activeJourney.index);
 }
 function init(){ renderJourneys(); initMoment(); renderEraGallery(); $('stats').innerHTML=`<span>${D.periods.length} 个历史阶段</span><span>${D.regions.length} 个地区</span><span id="statEvents">${allEvents().length} 条历史事件</span><span>${D.interactions.length} 组跨文明互动</span>`;
