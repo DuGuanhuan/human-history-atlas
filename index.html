@@ -424,6 +424,7 @@ function momentEventButton(e){
  const intro=document.createElement('span');intro.className='moment-intro';intro.textContent=e.desc||'';
  b.append(strong,date,level,intro);b.onclick=()=>detail(e);return b;
 }
+const expandedMomentEvents=new Set();
 function renderMoment(){
  const select=$('momentPeriod'),p=D.periods.find(x=>String(x.id)===select.value);if(!p)return;
  $('momentContext').innerHTML='<strong>'+esc(p.dates)+' · '+esc(p.title)+'</strong><span>'+esc(p.summary)+'</span>';
@@ -434,8 +435,17 @@ function renderMoment(){
   const events=allEvents().filter(e=>e.p===p.id&&e.r===r.id);
   const count=document.createElement('small');count.textContent=events.length+' 条已收录事件';card.append(count);
   if(!events.length){const empty=document.createElement('p');empty.className='moment-empty';empty.textContent='此阶段暂无收录；不代表没有历史。';card.append(empty)}
-  // Expand across all eras without abandoning the selected world moment.
-  events.slice(0,2).forEach(e=>card.append(momentEventButton(e)));
+  // Keep same-period evidence discoverable before offering a cross-era detour.
+  const samePeriodExpanded=expandedMomentEvents.has(r.id);
+  events.slice(0,samePeriodExpanded?undefined:2).forEach(e=>card.append(momentEventButton(e)));
+  if(events.length>2){
+   const reveal=document.createElement('button');reveal.type='button';reveal.className='moment-link moment-expand moment-same-period';
+   reveal.setAttribute('aria-expanded',String(samePeriodExpanded));
+   reveal.setAttribute('aria-label',(samePeriodExpanded?'收起':'显示')+r.name+'在'+p.dates+'的全部'+events.length+'条事件');
+   reveal.textContent=samePeriodExpanded?'收起本时期事件 ↑':'查看本时期其余 '+(events.length-2)+' 条事件 ↓';
+   reveal.onclick=()=>{if(samePeriodExpanded)expandedMomentEvents.delete(r.id);else expandedMomentEvents.add(r.id);renderMoment();[...$('momentGrid').children][j]?.querySelector('.moment-same-period')?.focus({preventScroll:true})};
+   card.append(reveal);
+  }
   const expanded=expandedMomentRegions.has(r.id);
   if(expanded){
    const chronology=document.createElement('div');chronology.className='moment-chronology';
@@ -470,7 +480,7 @@ function renderMoment(){
 }
 function initMoment(){
  const select=$('momentPeriod');D.periods.forEach(p=>select.add(new Option(p.dates+' · '+p.title,p.id)));
- select.value='7';select.addEventListener('change',()=>{focusedMomentRegion=null;expandedMomentRegions.clear();renderMoment()});renderMoment();
+ select.value='7';select.addEventListener('change',()=>{focusedMomentRegion=null;expandedMomentRegions.clear();expandedMomentEvents.clear();renderMoment()});renderMoment();
 }
 
 
