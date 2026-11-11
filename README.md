@@ -1,3 +1,6 @@
+## 编辑完整性审计
+运行 `node tests/editorial-integrity.mjs` 生成 `test-results/editorial-integrity.json`，包含八区分层、逐事件来源域名、长度和待复核警告。此工具**不联网、不核验历史事实或许可证**；`complete` 仅表示长文结构草稿，`verifiedComplete: 0` 是保守的核验状态，不等于这些文章事实错误。CI 在静态阶段运行并保留报告。
+
 # Human History Atlas · 世界历史交互图谱
 
 可离线运行的交互式世界历史时间线项目。`index.html` 为当前单文件版本，直接用浏览器打开即可。
