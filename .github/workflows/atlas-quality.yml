@@ -15,6 +15,13 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/validate.mjs
+      - run: node tests/editorial-integrity.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-editorial-audit
+          path: test-results/
+          retention-days: 7
   browser:
     runs-on: ubuntu-24.04
     needs: static
