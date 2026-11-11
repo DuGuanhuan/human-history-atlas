@@ -5,6 +5,54 @@ const pageUrl='file://'+path.resolve('index.html');
 for (const device of [{name:'desktop',width:1440,height:900},{name:'mobile',width:390,height:844}]) {
  test.describe(device.name,()=>{
   test.use({viewport:{width:device.width,height:device.height}});
+
+  test('首页三条探索入口 → 同期、跨地区故事、真实馆藏证据',async({page})=>{
+   await page.goto(pageUrl);
+   await expect(page.locator('#frontTitle')).toBeVisible();
+   await expect(page.locator('#frontObjectImage')).toHaveAttribute('alt',/古埃及/);
+   await page.locator('#frontMoment').click();
+   await expect(page.locator('#momentPeriod')).toBeFocused();
+   await expect(page.locator('#momentGrid .moment-region')).toHaveCount(8);
+   await page.locator('#frontJourney').click();
+   await expect(page.locator('#overlay')).toHaveClass(/open/);
+   await expect(page.locator('.deep-feature')).toBeVisible();
+   await page.keyboard.press('Escape');
+   await page.locator('#frontObject').click();
+   await expect(page.locator('.artifact-viewer')).toBeVisible();
+   await expect(page.locator('.artifact-viewer-copy')).toContainText('局限');
+   await expect(page.locator('.artifact-viewer-copy a[href*="metmuseum.org"]')).toHaveAttribute('href',/^https:\/\//);
+   await page.screenshot({path:'test-results/'+device.name+'-front-journey-object.png',fullPage:false});
+   await page.keyboard.press('Escape');
+   await expect(page.locator('#frontObject')).toBeFocused();
+  });
+  test('首页文物网络故障 → 明确文字替代 → 仍可阅读证据',async({page})=>{
+   await page.route('https://commons.wikimedia.org/**',route=>route.abort());
+   await page.goto(pageUrl);
+   await page.locator('#frontObjectImage').evaluate(img=>img.dispatchEvent(new Event('error')));
+   await expect(page.locator('.front-object-fallback')).toBeVisible();
+   await expect(page.locator('.front-object-fallback')).toContainText('真实馆藏图片暂不可用');
+   await page.locator('#frontObject').click();
+   await expect(page.locator('.artifact-viewer-copy')).toContainText('局限');
+   await page.locator('.artifact-viewer-image img').evaluate(img=>img.dispatchEvent(new Event('error')));
+   await expect(page.locator('.artifact-viewer-fallback')).toBeVisible();
+   await page.screenshot({path:'test-results/'+device.name+'-front-offline.png'});
+  });
+  test('首页窄屏无横向溢出，键盘能进入并退出证据对话框',async({page})=>{
+   await page.goto(pageUrl);
+   const front=page.locator('.editorial-front');
+   await expect(front).toBeVisible();
+   const dimensions=await front.evaluate(el=>({scroll:el.scrollWidth,client:el.clientWidth}));
+   expect(dimensions.scroll).toBeLessThanOrEqual(dimensions.client+2);
+   await page.locator('#frontObject').focus();
+   await page.keyboard.press('Enter');
+   await expect(page.locator('#overlay')).toHaveClass(/open/);
+   await expect(page.locator('#closeModal')).toBeFocused();
+   await page.keyboard.press('Escape');
+   await expect(page.locator('#overlay')).not.toHaveClass(/open/);
+   await expect(page.locator('#frontObject')).toBeFocused();
+   await page.screenshot({path:'test-results/'+device.name+'-front-responsive.png'});
+  });
+
   test('世界同一刻 → 地区 → 事件 → 资料',async({page})=>{
    await page.goto(pageUrl);
    await expect(page.locator('#momentGrid .moment-region')).toHaveCount(8);
